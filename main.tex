@@ -1,0 +1,62 @@
+\documentclass{acm_proc_article-sp}
+
+\usepackage[english]{babel}
+\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{multirow}
+\usepackage{url}
+\usepackage{subfig}
+\usepackage{ifthen}
+% Very convenient to add comments on the paper. Just set the boolean
+% to false before sending the paper:
+\newboolean{showcomments}
+\setboolean{showcomments}{true}
+\ifthenelse{\boolean{showcomments}}
+{ \newcommand{\mynote}[2]{
+    \fbox{\bfseries\sffamily\scriptsize#1}
+    {\small$\blacktriangleright$\textsf{\emph{#2}}$\blacktriangleleft$}}}
+{ \newcommand{\mynote}[2]{}}
+
+% One command per author:
+\newcommand{\cd}[1]{\mynote{Corentin}{#1}}
+\newcommand{\todo}[1]{\mynote{Todo}{#1}}
+
+\DeclareCaptionType{copyrightbox}
+
+
+\begin{document}
+
+\title{PaaS paper}
+\numberofauthors{6} 
+\author{
+\alignauthor
+Corentin Dupont
+       \affaddr{Create-Net}\\
+       \affaddr{Trento, Italy}\\
+       \email{corentin.dupont@create-net.org}
+}
+
+\maketitle
+\begin{abstract}
+\input{abstract}
+\end{abstract}
+
+\category{}{}{\todo{}}
+\terms{\todo{}}
+
+\keywords{\todo{}}
+
+\input{intro}
+\input{architecture}
+\input{relworks}
+\input{conclusion}
+
+\section*{Acknowledgments}
+
+This work has been carried out within the European Projects DC4Cities (FP7-ICT-2013.6.2).
+
+\bibliographystyle{abbrv}
+\bibliography{biblio}
+
+\end{document}
