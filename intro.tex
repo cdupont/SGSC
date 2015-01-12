@@ -2,10 +2,44 @@
 \section{Introduction}
 \label{sec: intro}
 
+Conference Call: Cloud Economics
+- Cloud Strategy for Enterprise Business Transformation
+- Cloud Service Level Agreement (SLA)
+- Economic, Business Model of Cloud
+- ROI Analysis
+- Green and Energy Management of Cloud Computing
+
 Paradigm shift: transition from "consume less" to "consume better" \\
 Why? Because data centres power consumption decelerated in the last years: it's still increasing, but less quickly (cite). \\
 
 Therefore: Use more renewables -> schedule tasks when Sun is shining -> solve at PaaS or application level \\
 Horizontal/Vertical scaling \\
 
+WM:
+Applications can define their working modes based on the following characteristics:
+The number of instances (CF, OS), e.g. WM1 1 instance, WM2 2 instances, etc. Horiz. Scal.
+Resource capacities (CF, OS), e.g. WM1 2 cores, 2GB RAM, etc. Vertical Scal. OS flavor.
+Application Level Scaling: e.g. Parallel Processing: WM1 1 Thread, WM2 2 Processes, etc.
 
+WM optimization:
+OS: Working Modes are encapsulated as VMs.
+It is more efficient to define Wms based on Application Level Scaling, e.g. parallel processing, if possible.
+If we define WM based on resource capacities,  switching WM operation is more costly.
+Resizing operation in OS.
+Or ending a VM, and bring another VM up.
+
+Activity Plan:
+
+Is an ordered list of WMs for timeslots of a timeframe (24hours).
+It is prepared based on renewable energy policies, e.g. aggressive, eager.
+Switching operation happens when moving to a timeslot WM changes respect to the last timeslot.
+
+PaaS architecture in DC4City
+EASC-CFApp1: intermediates between EASC and CF for application App1. It receives activity plan and enact it by invoking CF scaling down/up operations.
+CF is hosted in OS via CF BOSH component.
+PaaS optimization:
+
+IaaS architecture in DC4City
+EASC-OSApp1: intermediates between EASC and OS for application App1. It receives activity plan and enact it by invoking OS resizing operation (Nova API), application level scaling.
+CF is hosted in OS via CF BOSH component.
+IaaS optimization:
