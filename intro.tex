@@ -1,14 +1,14 @@
 % !TEX root =  main.tex
 \section{Introduction}
 \label{sec: intro}
-Paper Proposal:
-Context:
-  Conference Call: Cloud Economics
-- Cloud Strategy for Enterprise Business Transformation
-- Cloud Service Level Agreement (SLA)
-- Economic, Business Model of Cloud
-- ROI Analysis
-- Green and Energy Management of Cloud Computing
+Paper Proposal: \\
+Context: \\
+  Conference Call: Cloud Economics \\
+- Cloud Strategy for Enterprise Business Transformation \\
+- Cloud Service Level Agreement (SLA) \\
+- Economic, Business Model of Cloud \\
+- ROI Analysis \\
+- Green and Energy Management of Cloud Computing \\
 
 Paradigm shift: transition from "consume less" to "consume better" \\
 Why? Because data centres power consumption decelerated in the last years: it's still increasing, but less quickly (cite). \\
@@ -16,48 +16,48 @@ Why? Because data centres power consumption decelerated in the last years: it's 
 Therefore: Use more renewables -> schedule tasks when Sun is shining -> solve at PaaS or application level \\
 Horizontal/Vertical scaling \\
 
-Problem:
-- No interaction between adaptive applications can miss potential saving.
-- Renewable energy availability dictates energy consumption quota/budget at IaaS level through consolidation factor parameter. That is for higher REN consolidation factor is lower to use more resource, and vice versa for lower REN value.
-- Need to use cloud computing as the computing backend to manage application/workload lifecycle in order to provide a more general framework for DC4City project
--- Cloud architecture based on CloudFoundry and OpenStack for DC4Cities project
--- Connection to DC4Cities components, EASC, CTRL system, Working Mode, Activity Plan, etc.
--- DC4C (our) needs/expectations from the cloud:
---- to provide elasticity/scalability in terms of applications capacity and resource requirements, so apps can scale up/down to model adaptive behavior to renewables
---- to provide better energy management via consolidation techniques, etc.
---- Discussion on energy optimization within this architecture, including multi-level and multi-layer optimization
+Problem: \\
+- No interaction between adaptive applications can miss potential saving. \\
+- Renewable energy availability dictates energy consumption quota/budget at IaaS level through consolidation factor parameter. That is for higher REN consolidation factor is lower to use more resource, and vice versa for lower REN value. \\
+- Need to use cloud computing as the computing backend to manage application/workload lifecycle in order to provide a more general framework for DC4City project \\
+-- Cloud architecture based on CloudFoundry and OpenStack for DC4Cities project \\
+-- Connection to DC4Cities components, EASC, CTRL system, Working Mode, Activity Plan, etc. \\
+-- DC4C (our) needs/expectations from the cloud: \\
+--- to provide elasticity/scalability in terms of applications capacity and resource requirements, so apps can scale up/down to model adaptive behavior to renewables \\
+--- to provide better energy management via consolidation techniques, etc. \\
+--- Discussion on energy optimization within this architecture, including multi-level and multi-layer optimization \\
 
 
-application scaling based on DC4Cities command,
-working mode definition in PaaS
+application scaling based on DC4Cities command, \\
+working mode definition in PaaS \\
 
-CloudFoundry/PaaS components
+CloudFoundry/PaaS components \\
 
-CloudFoundry coordination/interaction in OpenStack
-Application instances consolidation: using tools
-Containers consolidation: tools
+CloudFoundry coordination/interaction in OpenStack \\
+Application instances consolidation: using tools \\
+Containers consolidation: tools \\
 
 
-providing scenarios for these cases
-Objective and issues
-- Need to coordinate the execution mode for adaptive applications to fit energy availability
-autonomic system:
--loop within DC4C system between CTRL system <--> EASC
--loop within PaaS/IaaS apps
+providing scenarios for these cases \\
+Objective and issues \\
+- Need to coordinate the execution mode for adaptive applications to fit energy availability \\
+autonomic system: \\
+-loop within DC4C system between CTRL system <--> EASC \\
+-loop within PaaS/IaaS apps \\
 		
-Contributions
-- cloud (consolidation algorithm) to coordinate working modes of energy adaptive applications
-- application agnostic. Applications need to be adapted but with limited interactions
+Contributions \\
+- cloud (consolidation algorithm) to coordinate working modes of energy adaptive applications \\
+- application agnostic. Applications need to be adapted but with limited interactions \\
 	
-Results:
-- an cloud based architecture
-- scalability:  large number of EASC, number of alternatives, avg. computation time, slot numbers, \todo{high level metrics for scalability}
-- extensibility: already developed X constraints, Y objectives
+Results: \\
+- an cloud based architecture \\
+- scalability:  large number of EASC, number of alternatives, avg. computation time, slot numbers, \todo{high level metrics for scalability} \\
+- extensibility: already developed X constraints, Y objectives \\
  
-Work Plan
+Work Plan \\
 
-- autonomous applications~\cite{kephart-computer2003} to fit the workload through several several execution modes. Elastic computing as the leading concept instantiation in clouds~\cite{x}
-- energy adaptive applications that reconfigure their behavior/architecture \ms{No sure about reconfiguring their architecture} according to a energy concerns~\cite{energy-adaptive-apps-OSR12, others}
+- autonomous applications~\cite{kephart-computer2003} to fit the workload through several several execution modes. Elastic computing as the leading concept instantiation in clouds~\cite{x} \\
+- energy adaptive applications that reconfigure their behavior/architecture \ms{No sure about reconfiguring their architecture} according to a energy concerns~\cite{energy-adaptive-apps-OSR12, others} \\
 
 
 \section{DC4Cities:}
@@ -75,8 +75,8 @@ The DC4Cities project makes data centres energy adaptive in terms of electricity
 
 DC4Cities goal is to tune the data centre software execution load in such a way that the data centre power consumption matches the renewable energy source availability in compliance with the energy or power goals, set by an Energy Management Authority – for instance in the context of a Smart City.
 
-The DC4Cities platform is composed of three key components
-Energy Adaptive/Constrained Software & Infrastructure (EASC)
+The DC4Cities platform is composed of three key components:
+Energy Adaptive Software Component (EASC)
 DC4Cities Energy Subsystem (DC4ES) 
 DC4Cities Control System (CTRL)
 
@@ -84,7 +84,7 @@ The objective of DC4Cities is to let existing and new data centres become energy
 Allow the data centre to increase the usage of renewable energies.
 Reduce the overall energy consumption of a data centre.
 
-\section{Energy Adaptive/Constrained Software & Infrastructure (EASC)}
+\section{Energy Adaptive Software Controller (EASC)}
 
 EASC component provides techniques to shift the workload of running applications in time, to match it with the availability (or forecast availability) of renewable energy. The EASC role is to control one application, so as to make it “energy adaptive”, and responsive to the CTRL requests. As such, there should be one EASC configured for each controlled application (as a difference with the DC4ES and CTRL, which are unique in the data centre). The EASC plans the activity and control the performance levels of an specific application so as to follow energy budgets provided by the CTRL. To enable this, the EASC also has to monitor and predict the energy consumption and activity levels of the application.
 
