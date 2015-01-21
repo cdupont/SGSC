@@ -1,4 +1,4 @@
-\documentclass{acm_proc_article-sp}
+\documentclass[10pt, conference, compsocconf]{IEEEtran}
 
 \usepackage[english]{babel}
 \usepackage{latexsym}
@@ -29,24 +29,30 @@
 \begin{document}
 
 \title{PaaS paper}
-\numberofauthors{6} 
-\author{
-\alignauthor
-%Corentin Dupont
-       \affaddr{Create-Net}\\
-       \affaddr{Trento, Italy}\\
-       \email{corentin.dupont@create-net.org}
+
+\author{\IEEEauthorblockN{Authors Name/s per 1st Affiliation (Author)}
+\IEEEauthorblockA{line 1 (of Affiliation): dept. name of organization\\
+line 2: name of organization, acronyms acceptable\\
+line 3: City, Country\\
+line 4: Email: name@xyz.com}
+\and
+\IEEEauthorblockN{Authors Name/s per 2nd Affiliation (Author)}
+\IEEEauthorblockA{line 1 (of Affiliation): dept. name of organization\\
+line 2: name of organization, acronyms acceptable\\
+line 3: City, Country\\
+line 4: Email: name@xyz.com}
 }
+
 
 \maketitle
 \begin{abstract}
 \input{abstract}
 \end{abstract}
 
-\category{}{}{\todo{}}
-\terms{\todo{}}
+\begin{IEEEkeywords}
+component; formatting; style; styling;
 
-\keywords{\todo{}}
+\end{IEEEkeywords}
 
 \input{intro}
 
@@ -108,7 +114,7 @@ IaaS optimization:
 
 This work has been carried out within the European Projects DC4Cities (FP7-ICT-2013.6.2).
 
-\bibliographystyle{abbrv}
-\bibliography{biblio}
+%\bibliographystyle{abbrv}
+%\bibliography{biblio}
 
 \end{document}
