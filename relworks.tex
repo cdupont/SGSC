@@ -1,3 +1,23 @@
 % !TEX root =  main.tex
 \section{Related Works}
 \label{sec: relworks}
+
+This position paper claims that significant energy gains could be obtained by creating a cooperation API between the IaaS layer (in charge of handling elementary computing resources) and the PaaS layer (in charge of hosting applications). We discuss two complementary approaches for establishing such cooperation:
+
+Cross-layer Information Sharing. Each of the
+two layers contains information which is potentially
+relevant for the other in order to reduce the energy
+footprint of a given application. For example, an
+energy-aware IaaS may have an estimate of the en-
+ergy footprint of individual virtual machine types,
+which may be useful for the PaaS to preferentially se-
+lect energy-efficient VM instance types. Conversely,
+a PaaS layer may build short-term traffic predictions
+which constitute useful hints for IaaS-level consolida-
+tion algorithms.
+
+
+Cross-layer Coordination. Both layers should coordinate their reconfiguration actions to reach a state where they help each other in achieving their goals rather than potentially take mutually detrimental decisions. For example, if the IaaS layer decides to migrate a specific VM, then the PaaS could in many cases temporarily reduce the load of the concerned VM to facilitate its migration. Conversely, if the PaaS layer gives early warnings to the IaaS about future
+requests for creating/destroying resources, the IaaS layer can prepare in advance for these changes. 
+
+This paper proposes a research agenda towards the co-design of IaaS and PaaS layers. Section 2 first discusses the state of the art and motivation for this work. Section 3 details the issues created by the lack of IaaS-PaaS co-design. Then, Section 4 presents our early ideas about opportunities for improvement, while Section 5 outlines the design of interfaces to enable cross-layer cooperation in clouds. Finally, Section 6 concludes this work.
