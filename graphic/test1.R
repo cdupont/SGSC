@@ -1,30 +1,37 @@
 #!/usr/bin/Rscript --vanilla
-library(plotrix)
+
+#librarBizPerf(plotriHour)
 require(stats)
 
-x=c(1:5)
-y=c(1.1, 1.5, 2.9, 3.8, 5.2)
-sdd=c(0.2, 0.3, 0.4, 0.5, 0.6)
-sdu=c(0.1, 0.1, 0.1, 0.1, 0.1)
-epsilon=0.02
-#epsilon=c(0.2, 0.3, 0.4, 0.5, 0.6)
-#d = data.frame(x, y, sd)
+Hour<-c(0:24)
+Hour<-c(0, 6, 12, 18, 24)
+BizPerf=c(100, 200, 300, 400, 500)
+sdd=c(20, 30, 40, 50, 60)
+sdu=c(20, 20, 20, 20, 20)
+epsilon=.2
+#par(pch=22, col="red") # plotting sBizPerfmbol and color 
+#par(mfrow=c(2,4)) # all plots on one page 
 
-#pdf(paste("candle-graphic","-v1", ".pdf"))
-pdf(paste("candle-graphic-v1", ".pdf"))
-plot(x, y, ylim=c(0, 6))
-segments(x, y-sdd , x, y+sdu)
-segments(x-epsilon,y-sdd,x+epsilon,y-sdd)
-segments(x-epsilon,y+sdu,x+epsilon,y+sdu)
-
+pdf(paste("candle-graphic-v1.pdf"))
+#plot(Hour, BizPerf, ylim=c(0, 550), type="n", main="Service Flexibility Agreement")
+#legend(xrange[1], yrange[2], 1:ntrees, cex=0.8, col=colors, pch=plotchar, lty=linetype, title="Service Flexibility Agreement")
+plot(Hour, BizPerf, ylim=c(0, 550))
+lines(Hour, BizPerf, lty=3, type="s")
+segments(Hour, BizPerf-sdd , Hour, BizPerf+sdu)
+segments(Hour-epsilon, BizPerf-sdd, Hour+epsilon, BizPerf-sdd)
+segments(Hour-epsilon, BizPerf+sdu, Hour+epsilon, BizPerf+sdu)
+#legend(title="Service Flexibility Agreement")
 
 quit();
 
+for(i in 1:5) {
+}
+
 epsilon = 0.02
 for(i in 1:5) {
-    up = y[i] + sd[i]
-    low = y[i] - sd[i]
-    segments(x[i],low , x[i], up)
-    segments(x[i]-epsilon, up , x[i]+epsilon, up)
-    segments(x[i]-epsilon, low , x[i]+epsilon, low)
+    up = BizPerf[i] + sd[i]
+    low = BizPerf[i] - sd[i]
+    segments(Hour[i],low , Hour[i], up)
+    segments(Hour[i]-epsilon, up , Hour[i]+epsilon, up)
+    segments(Hour[i]-epsilon, low , Hour[i]+epsilon, low)
 }
