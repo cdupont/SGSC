@@ -4,25 +4,48 @@
 %EE
 
 %IaaS EE
-VM consolidation
-Scheduling
+%-VM consolidation %-Scheduling
 %History of energy optimization in virtualized datacenters, in a single datacenter
-Consolidation is a powerful means to improve IT efficiency and reduce power consumption. VM consolidation approaches to reduce energy consumption at IaaS layer have been explored in many recent papers \cite{Cardosa} \cite{ITProf1} \cite{Schroder} \cite{Hermenier2009} \cite{sheikhalishahi_energy_2011}.
+Workload consolidation is a powerful means to improve IT efficiency and reduce power consumption. VM consolidation approaches to reduce energy consumption at IaaS layer have been explored in many recent papers \cite{Cardosa} \cite{ITProf1} \cite{Schroder} \cite{Hermenier2009} \cite{sheikhalishahi_energy_2011} \cite{sheikhalishahi_multi-capacity_2014}.
+
+%-Scaling operation, Service Flexibility Agreement
+In addition, there are energy efficient solutions based on scaling operations (scale up/down application) based on applications performance metrics. Although these proposals reduce the energy footprint of applications and by transitivity of cloud infrastructures, they do not consider the applications internal to finely define a trade-off between applications Quality of Service and energy footprint.
 
 In \cite{sheikhalishahi_multi-capacity_2014}, authors presented a multi-resource scheduling technique to provide a higher degree of consolidation in multi-dimensional computing systems.
 
 Renewable energy availability can estimate a good measure to provide a good consolidation degree.
 
-Autonomic Computing has been exploited in the design of cloud computing architectures in order to devise autonomic loops aiming at providing coordinated actions among cloud layers for efficiency measures, turning each layer of the cloud stack more autonomous, adaptable and aware of the runtime environment.
+Autonomic Computing has been exploited in the design of cloud computing architectures in order to devise autonomic loops aiming at providing coordinated actions among cloud layers for efficiency measures, turning each layer of the cloud stack more autonomous, adaptable and aware of the runtime environment \cite{alvares_de_oliveira_synchronization_2012} \cite{de_oliveira_self-management_2012}  \cite{de_oliveira_framework_2013}.
 
-In order to reach a global and efficient state due to conflicting objectives, autonomic loops need to be synchronized. In [1], authors proposed a generic model to synchronize and coordinate autonomic loops in cloud computing stack. The feasibility and scalability of their approach is evaluated via simulation-based experiments on the interaction of several self-adaptive applications with a common self-adaptive infrastructure.
+In order to reach a global and efficient state due to conflicting objectives, autonomic loops need to be synchronized. In \cite{alvares_de_oliveira_synchronization_2012}, authors proposed a generic model to synchronize and coordinate autonomic loops in cloud computing stack. The feasibility and scalability of their approach is evaluated via simulation-based experiments on the interaction of several self-adaptive applications with a common self-adaptive infrastructure.
 
 
-In \cite{2}, authors propose a self-adaptation approach that considers both application internals and system to reduce the energy footprint in cloud infrastructure. Each application and the infrastructure are equipped with their own control loop, which allows them to autonomously optimize their executions. Simulations show that the approach may lead to appreciable energy savings without interfering on application provider revenues.
+In \cite{de_oliveira_self-management_2012}, authors propose a self-adaptation approach that considers both application internals and system to reduce the energy footprint in cloud infrastructure. Each application and the infrastructure are equipped with their own control loop, which allows them to autonomously optimize their executions. Simulations show that the approach may lead to appreciable energy savings without interfering on application provider revenues.
 
-2 Self-management of cloud applications and infrastructure for energy optimization
+In addition to elasticity, scalability is another major advantage introduced by the cloud paradigm. In \cite{vaquero_dynamically_2011}, automated application scalability in cloud environments are presented. Authors highlight challenges that will likely be addressed in new research efforts and present an ideal scalable cloud system.
+
+% However, there are some important pending issues before making the dreamed automated scaling for applications come true. 
+%We present relevant efforts at the edge of state of the art technology, providing an encompassing overview of the trends they each follow. 
+
+%PaaS-IaaS
+\cite{carpen-amarie_towards_2014} proposes a co-design of IaaS and PaaS layers for energy optimization in the cloud. The paper outlines the design of interfaces to enable cross-layer cooperation in clouds. This position paper claims that significant energy gains could be obtained by creating a cooperation API between the IaaS layer and the PaaS layer. Authors discuss two complementary approaches for establishing such cooperation: Cross-layer Information Sharing, and Cross-layer Coordination.
+
+%PaaS EE
+Containers
+
+
 
 %move to INTRO
+
+Many research efforts have been dedicated to reducing cloud energy consumption, in particular by optimizing the Infrastructure-as-a-Service layer of the Cloud. Infrastructure-as-a-Service (IaaS) is the layer in charge of the virtualization of physical resources, and therefore has direct control over energy-related elements. However, the IaaS layer has no knowledge about the nature of applications which run over these resources, which limits the scope of decisions it can take.
+http://www.conpaas.eu/open-postdoc-position/
+
+The EcoPaaS project therefore aim at making the IaaS layer (in charge of resources) and the PaaS layer (in charge of applications) collaborate to further reduce the Cloud energy consumption. The idea is to define standard interfaces that allow both layers to exchange relevant information and to coordinate their actions. Exchanging information will for example allow the PaaS layer to estimate the energy consumption of each application it is running. Coordinating actions will in turn allow the system to avoid situations where both layers simultaneously take mutually-damaging actions.
+
+We will therefore investigate difficult scientific questions such as: which information can and should be exchanged between the two layers? What are the necessary coordination mechanisms to control reconfigurations and avoid detrimental side effects between the two layers? And which energy savings can we potentially obtain if we deployed such techniques in large commercial clouds?
+
+We will address these questions in the context of the ConPaaS system running over an energy-efficient private cloud such as Snooze. We will follow a systems-oriented methodology based on rigorous experimental data collection, formulation of hypotheses about the necessary mechanisms, prototype implementations, and experimental (in-)validation of the hypotheses.
+
 Cloud Computing provides highly flexible infrastructures in which resources and software services are provisioned on demand through the concept of elasticity.
 
 
@@ -31,19 +54,9 @@ In point of fact, from the application provider perspective, Autonomic Computing
 Implementing elasticity to tackle varying workloads while optimizing infrastructures (e.g. utilization rate) and fulfilling applications’ requirements on Quality of Service still remains an open issue and should be addressed by self-adaptation techniques able to manage complexity and dynamism. 
 
 This model is applied to a Cloud Computing scenario in which several self-adaptive applications interact with a common self-adaptive infrastructure. The objective at the application level is to manage the runtime context to minimize costs while maximizing the QoS, whereas at the infrastructure level, the objective is to manage the context to optimize the utilization rate. 
-[1] Synchronization of Multiple Autonomic Control Loops: Application to Cloud Computing
 
-As a direct consequence of the increasing popularity of Cloud Computing solutions, data centers are amazingly growing
-and hence have to urgently face with the energy consumption issue. Available solutions rely on Cloud Computing
-models and virtualization techniques to scale up/down application based on their performance metrics. Although
-those proposals can reduce the energy footprint of applications and by transitivity of cloud infrastructures, they
-do not consider the internal characteristics of applications to finely define a trade-off between applications Quality of Service and energy footprint.
 
-%PaaS EE
-Containers
 
-%PaaS-IaaS
-\cite{} proposes a co-design of IaaS and PaaS layers for energy optimization in the cloud. The paper outlines the design of interfaces to enable cross-layer cooperation in clouds. This position paper claims that significant energy gains could be obtained by creating a cooperation API between the IaaS layer and the PaaS layer. Authors discuss two complementary approaches for establishing such cooperation: Cross-layer Information Sharing, and Cross-layer Coordination.
 
 Each of the two layers contains information which is potentially relevant for the other in order to reduce the energy footprint of a given application. For example, an energy-aware IaaS may have an estimate of the energy footprint of individual virtual machine types, which may be useful for the PaaS to preferentially select energy-efficient VM instance types. Conversely, a PaaS layer may build short-term traffic predictions which constitute useful hints for IaaS-level consolidation algorithms.
 
@@ -64,6 +77,11 @@ application/service goals:
 
 
 \subsubsection{cloud computing}
+
+Scalability is said to be one of the major advantages brought by the cloud paradigm and, more specifically, the one that makes it different to an “advanced outsourcing” solution. However, there are some important pending issues before making the dreamed automated scaling for applications come true. In this paper, the most notable initiatives towards whole application scalability in cloud environments are presented. We present relevant efforts at the edge of state of the art technology, providing an encompassing overview of the trends they each follow. We also highlight pending challenges that will likely be addressed in new research efforts and present an ideal scalable cloud system.
+
+[] Dynamically Scaling Applications in the Cloud
+
 Our scenario consists of two types of inter-dependent managed systems: Applications and Infrastructure.
 This scenario comprises several coordinated control loops: one at the infrastructure level, namely the infrastructure manager (IM) and one per-application at application level, namely application manager (AM), as shown in Figure 4.
 
