@@ -33,8 +33,6 @@ In addition to elasticity, scalability is another major advantage introduced by 
 %PaaS EE
 Containers
 
-
-
 %move to INTRO
 
 Many research efforts have been dedicated to reducing cloud energy consumption, in particular by optimizing the Infrastructure-as-a-Service layer of the Cloud. Infrastructure-as-a-Service (IaaS) is the layer in charge of the virtualization of physical resources, and therefore has direct control over energy-related elements. However, the IaaS layer has no knowledge about the nature of applications which run over these resources, which limits the scope of decisions it can take.
@@ -48,90 +46,17 @@ We will address these questions in the context of the ConPaaS system running ove
 
 Cloud Computing provides highly flexible infrastructures in which resources and software services are provisioned on demand through the concept of elasticity.
 
-
 In point of fact, from the application provider perspective, Autonomic Computing makes application capable of reacting to a highly variable workload by dynamically adjusting the amount of resources needed to be executed while keeping its Quality of Service (QoS) [11]. From the infrastructure provider point of view, it also makes the infrastructure capable of rapidly reacting to environment changes (e.g. increase/decrease of physical resource usage) by optimizing the allocation of resources and thereby reduce the costs related to energy consumption [4].
 
 Implementing elasticity to tackle varying workloads while optimizing infrastructures (e.g. utilization rate) and fulfilling applications’ requirements on Quality of Service still remains an open issue and should be addressed by self-adaptation techniques able to manage complexity and dynamism. 
 
 This model is applied to a Cloud Computing scenario in which several self-adaptive applications interact with a common self-adaptive infrastructure. The objective at the application level is to manage the runtime context to minimize costs while maximizing the QoS, whereas at the infrastructure level, the objective is to manage the context to optimize the utilization rate. 
 
-
-
-
 Each of the two layers contains information which is potentially relevant for the other in order to reduce the energy footprint of a given application. For example, an energy-aware IaaS may have an estimate of the energy footprint of individual virtual machine types, which may be useful for the PaaS to preferentially select energy-efficient VM instance types. Conversely, a PaaS layer may build short-term traffic predictions which constitute useful hints for IaaS-level consolidation algorithms.
 
 Both layers should coordinate their reconfiguration actions to reach a state where they help each other in achieving their goals rather than potentially take mutually detrimental decisions. For example, if the IaaS layer decides to migrate a specific VM, then the PaaS could in many cases temporarily reduce the load of the concerned VM to facilitate its migration. Conversely, if the PaaS layer gives early warnings to the IaaS about future
 requests for creating/destroying resources, the IaaS layer can prepare in advance for these changes. 
 
-\subsection{coordination of autonomic applications}
-coordination of autonomic applications
--via a central system
--the execution mode for adaptive applications
-
-application/service types:
--production scientific workloads
--web services
-
-application/service goals:
--meeting jobs' SLA, and deadlines
-
-
-\subsubsection{cloud computing}
-
-Scalability is said to be one of the major advantages brought by the cloud paradigm and, more specifically, the one that makes it different to an “advanced outsourcing” solution. However, there are some important pending issues before making the dreamed automated scaling for applications come true. In this paper, the most notable initiatives towards whole application scalability in cloud environments are presented. We present relevant efforts at the edge of state of the art technology, providing an encompassing overview of the trends they each follow. We also highlight pending challenges that will likely be addressed in new research efforts and present an ideal scalable cloud system.
-
-[] Dynamically Scaling Applications in the Cloud
-
-Our scenario consists of two types of inter-dependent managed systems: Applications and Infrastructure.
-This scenario comprises several coordinated control loops: one at the infrastructure level, namely the infrastructure manager (IM) and one per-application at application level, namely application manager (AM), as shown in Figure 4.
-
-AMs control loops aim at minimizing the amount of VMs needed to keep the level of QoS as high as possible. Furthermore, AMs are able to adapt their application’s architectural configuration in order to cope with resource restriction imposed by the IM.
-
-More precisely, AMs monitor/listen for events that come either from the application itself or from the IM; analyze whether or not it is necessary to reconfigure the application by considering the execution context (e.g. the workload, the current application configuration, the current mapping of components to VMs, etc.); elaborate a reconfiguration plan; and execute actions corresponding to the reconfiguration plan.
-
-Regarding the IM, apart from dealing with requests sent by AMs, its objective is to optimize the placement of these VMs on PMs so that it is possible to reduce the number of PMs powered on and consequently reduce the energy
-consumption. To this end, the IM monitors/listens for events that come either from the infrastructure itself (e.g. PMs Utilization) or from the AMs; analyze whether or not it is necessary to replace or to change its current configuration by considering the execution context (e.g. the current mapping VMs to PMs); plan and execute the reconfiguration.
-
-
-
-------Good description texts----------
-
-
-%SFA, App goals, conflicting goals
-For instance, in order to maintain its Quality of Service, an application provider might request more and more resources while the infrastructure provider, due to power shortage may be forced to reduce the resource provisioning.
-
-This paper proposes a generic model for synchronization and coordination of
-control loops. We have studied a communication model for several control loops
-and proposed a coordination protocol based on interloop events and actions. To
-allow safe interactions, we propose a shared knowledge-based synchronization
-pattern. That way, decisions taken by one control loop may take into considera-
-tion some information provided by other control loops. This model is applied to
-a Cloud Computing scenario in which several self-adaptive applications interact
-with a common self-adaptive infrastructure. The objective at the application
-level is to manage the runtime context to minimize costs while maximizing the
-QoS, whereas at the infrastructure level, the objective is to manage the context
-to optimize the utilization rate. The feasibility and scalability of this approach is
-evaluated via simulation-based experiments on the Cloud Computing scenario.
-
-
-
-A framework for the coordination of multiple autonomic managers in cloud environments
-
-However, since Cloud systems are organized in different but dependent Cloud layers, self-management decisions taken in isolation in a certain layer may indirectly interfere with the decision taken by another layer and globally affect the performance of the whole Cloud stack. 
-
-Indeed, non-coordinated managers may lead to conflicting decisions and consequently to non-desired states. This paper proposes a framework for the coordination of multiple autonomic managers in Cloud systems. This framework introduces two kinds of managers: (i) one for each application; and (ii) another for the infrastructure. 
-
-To tackle the problem of interferences between these Cloud autonomic managers, we propose a coordination protocol based on inter-manager events and actions along with synchronization mechanisms. The goal is to improve the synergy between layers in a loose-coupling manner. We evaluated the approach through an experimental scenario on Grid5000, a real physical infrastructure testbed. In this use case, we show that our framework improves the synergy between cloud systems while dealing with conflicting objectives and negative interferences.
-
-In [13], the authors proposed an hierarchical approach for
-the coordination of several AMs within a data center. Each
-AM corresponds to a specific resource in each level of the
-data center architecture (virtual machines, physical machines,
-rack, cluster). The idea is that higher level AMs (e.g. at the
-rack level) are capable to take global decisions by relying
-on information provided by lower level AMs (e.g. physical
-machines) with the purpose to avoid decisions that interfere
-negatively on other AMs.
 
 Similarly, [4] proposed an hierarchical autonomic approach
 for multi-tier web applications. The objective is to deal with
@@ -145,18 +70,4 @@ therefore may be performed more frequently. The interference are managed by shar
 
 Co-Con [14] is an approach for the coordination of multiple AMs in order to manage power and application-level performance in data centers. It consists of one cluter-level power controller, which adjusts the CPU frequencies of PMs; and several VM-level performance controllers, which adjust the resource fraction allocated the concerned VM based on its actual response time. To avoid interferences, the authors claim that a primary controller (power) must have a control period greater than the settling time of the secondary ones (performance), because hence the secondary ones can achieve a steady state within the control period of the primary one.
 
-[8] identifies five different patterns of interacting AMs in
-self-adaptive systems where each pattern can be considered as
-a particular way to orchestrate the AMs. In a previous work [7],
-we relied on a variation of the information sharing pattern, in
-which AMs communicate only through their natural interfaces
-(monitor and executor) and share a piece of information (public
-knowledge). Similarly, [15] extends AMs with support for two
-types of coordination: intra-loop and inter-loop coordinations,
-but restrained to a self-healing use case.
-
 On the one hand, in the context of cloud computing, it is required that managed systems (services) and AMs meet some constraints with respect to information hiding and loose-coupling. On the other hand, AMs which are completely unaware of others managed systems’ context may lead to decisions that impacts negatively services managed by other AMs. The work previously presented do not fit this context due to the high level of details shared among AMs such as application-level performance details or CPU frequencies levels. Instead, this work proposes an event-based coordination mechanism equipped with a public knowledge, which is used by AMs to share a piece of information that can be used within other AMs’ analyses process. The objective is to promote a synergy between AMs while keeping the required level of loose-coupling between AMs.
-
-
-%Integration with electrical grid
-
