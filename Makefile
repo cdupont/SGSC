@@ -1,6 +1,9 @@
 main = main
 
-all: pdf
+all:  r pdf
+
+r: 
+	cd R; Rscript SFA-candles.R
 
 pdf:
 	pdflatex $(main)
@@ -10,4 +13,4 @@ pdf:
 	pdflatex $(main)
 
 clean:
-	rm -f *.aux *.log *.bbl *.blg *.toc *.lof *.lot *.out
+	rm -f *.aux *.log *.bbl *.blg *.toc *.lof *.lot *.out generated/*

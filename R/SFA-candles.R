@@ -12,7 +12,7 @@ epsilon=.2
 #par(pch=22, col="red") # plotting sBizPerfmbol and color 
 #par(mfrow=c(2,4)) # all plots on one page 
 
-pdf(paste("candle-graphic-v1.pdf"))
+pdf(paste("../generated/SFA-candles.pdf"))
 #plot(Hour, BizPerf, ylim=c(0, 550), type="n", main="Service Flexibility Agreement")
 #legend(xrange[1], yrange[2], 1:ntrees, cex=0.8, col=colors, pch=plotchar, lty=linetype, title="Service Flexibility Agreement")
 plot(Hour, BizPerf, ylim=c(0, 550))
