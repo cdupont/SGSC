@@ -2,171 +2,192 @@
 \section{Introduction}
 \label{sec: intro}
 
-Paradigm shift: transition from "consume less" to "consume better" \\
-Why? Because data centres power consumption decelerated in the last years: it's still increasing, but less quickly (cite). \\
+A recent study~\cite{koomey2011} showed that, while still growing, the energy consumption of data centres is actually less than previously excepted.
+Electricity used in US data centers in 2010 was significantly lower than predicted by the EPA’s 2007 report to Congress on data centers.
+There is a combination of factors explaining this slow down, among which the application of energy policies in data centres.
 
-Therefore: Use more renewables -> schedule tasks when Sun is shining -> solve at PaaS or application level \\
-Horizontal/Vertical scaling \\
+This is why we think the attention of researchers in the field of Energy Management in Clouds should shift from the paradigm of "consume less" to the paradigm of "consume better".
+As important energy consumers, it is important the energy management and policies of data centres prioritize the consumption of renewable energies over brown energies.
+However renewable energies are very variable in time.
+To adapt to such energies, we need to adapt and shift the workload of applications.
 
-Problem: \\
-- No interaction between adaptive applications can miss potential saving. \\
-- Renewable energy availability dictates energy consumption quota/budget at IaaS level through consolidation factor parameter. That is for higher REN consolidation factor is lower to use more resource, and vice versa for lower REN value. \\
-- Need to use cloud computing as the computing backend to manage application/workload lifecycle in order to provide a more general framework for DC4City project \\
--- Cloud architecture based on CloudFoundry and OpenStack for DC4Cities project \\
--- Connection to DC4Cities components, EASC, CTRL system, Working Mode, Activity Plan, etc. \\
--- DC4C (our) needs/expectations from the cloud: \\
---- to provide elasticity/scalability in terms of applications capacity and resource requirements, so apps can scale up/down to model adaptive behavior to renewables \\
---- to provide better energy management via consolidation techniques, etc. \\
---- Discussion on energy optimization within this architecture, including multi-level and multi-layer optimization \\
+In this paper we start to analyse how a PaaS on top of IaaS may change the landscape.
+We think that a PaaS layer brings great potentialities for a better energy management in data centres, because it centralizes and standardizes the scalable deployment of applications.
+Typically, an application manager will issue a command to a PaaS framework (such as CloudFoundry) to scale up or down and application, according to predefined patterns.
+Some frameworks allow to automatize this process: CloudFoundry, for example, provides a languages for auto-scaling.
+This language will define KPI and thresholds that will trigger the scaling operations.
+For example, in the case of a 3-tier web server application, it is possible to describe that if the number of page views per minute goes over a threshold, a new front-end VM should be launched.
+
+However, we think that a piece is missing: indeed the framework still have no way to lower the workload when there is no renewable energy, for instance.
+We believe that some part of the flexibility provided to the applications by the PaaS layer should be transferee to an intermediate component called the "autoscaler".
+
+On the one side, the availability of PaaS infrastructure simplifies the understanding of deployed applications in the virtual appliance (e.g. the information on relations between services in different appliances is transparent), on the other it makes more complex the workload management (e.g. containers add a further level of complexity in the modeling of data center resources) and hence it requires a better understanding of implications between the two layers in the energy optimization of used resources.
+The paper will also discuss how the combination of IaaS and PaaS consolidation techniques can improve energy saving and cleverly applied to reduce CO2 energy consumption scaling up and down applications following the curve of green energy availability.
+
+In this paper we propose the concept of Service Flexibility Agreement (SFA). 
+The SFA is and extended Service Level Agreement (SLA): it includes a description of the flexibility of an application.
+The SLA usually define minimum levels of resources that an application should be guaranteed to have.
+However, in the context of flexible applications, this is not enough: some applications can accept to have a temporarily reduced performance or shifted activity.
+The SFA defines a simple interface to describe this flexibility between an application and the PaaS framework.
+This will allow an energy-aware PaaS framework to make better decisions and trace-offs.
 
 
-application scaling based on DC4Cities command, \\
-working mode definition in PaaS \\
-
-CloudFoundry/PaaS components \\
-
-CloudFoundry coordination/interaction in OpenStack \\
-Application instances consolidation: using tools \\
-Containers consolidation: tools \\
+%A great amount of literature exists on energy saving in data centres.
+%Most of them are based on VM consolidation.
+%This is for sure the easiest way to save energy and it is crucial for small data centres: use less servers to manage the same amount of workload.
+%In traditional pure IaaS-based Cloud, this is handled using state-of-the-art consolidation techniques combined with analysis of relationship among running VMs to ensure that consolidation keep VMs that share a lot of traffic in the same server.
 
 
-providing scenarios for these cases \\
-Objective and issues \\
-- Need to coordinate the execution mode for adaptive applications to fit energy availability \\
-autonomic system: \\
--loop within DC4C system between CTRL system <--> EASC \\
--loop within PaaS/IaaS apps \\
-		
-Contributions \\
-- cloud (consolidation algorithm) to coordinate working modes of energy adaptive applications \\
-- application agnostic. Applications need to be adapted but with limited interactions \\
-	
-Results: \\
-- an cloud based architecture \\
-- scalability:  large number of EASC, number of alternatives, avg. computation time, slot numbers, \todo{high level metrics for scalability} \\
-- extensibility: already developed X constraints, Y objectives \\
+%Therefore: Use more renewables -> schedule tasks when Sun is shining -> solve at PaaS or application level \\
+%Horizontal/Vertical scaling \\
+
+%Problem: \\
+%- No interaction between adaptive applications can miss potential saving. \\
+%- Renewable energy availability dictates energy consumption quota/budget at IaaS level through consolidation factor parameter. That is for higher REN consolidation factor is lower to use more resource, and vice versa for lower REN value. \\
+%- Need to use cloud computing as the computing backend to manage application/workload lifecycle in order to provide a more general framework for DC4City project \\
+%-- Cloud architecture based on CloudFoundry and OpenStack for DC4Cities project \\
+%-- Connection to DC4Cities components, EASC, CTRL system, Working Mode, Activity Plan, etc. \\
+%-- DC4C (our) needs/expectations from the cloud: \\
+%--- to provide elasticity/scalability in terms of applications capacity and resource requirements, so apps can scale up/down to model adaptive behavior to renewables \\
+%--- to provide better energy management via consolidation techniques, etc. \\
+%--- Discussion on energy optimization within this architecture, including multi-level and multi-layer optimization \\
+%
+%
+%providing scenarios for these cases \\
+%Objective and issues \\
+%- Need to coordinate the execution mode for adaptive applications to fit energy availability \\
+%autonomic system: \\
+%-loop within DC4C system between CTRL system <--> EASC \\
+%-loop within PaaS/IaaS apps \\
+%		
+%Contributions \\
+%- cloud (consolidation algorithm) to coordinate working modes of energy adaptive applications \\
+%- application agnostic. Applications need to be adapted but with limited interactions \\
+%	
+%Results: \\
+%- scalability:  large number of EASC, number of alternatives, avg. computation time, slot numbers, \todo{high level metrics for scalability} \\
+%- extensibility: already developed X constraints, Y objectives \\
  
-Work Plan \\
 
-\subsection{Paper Content Formation}
-PaaS definition:
-
--PaaS provides application developers with runtime environments where applications can be easily deployed and managed in the cloud (Pierre and Stratan, 2012; Dib et al., 2013).
--PaaS is an infrastructure inside another infrastructure.
--does not provide cloud resources directly.
--uses an underlying IaaS layer for resource management.
-
--In PaaS applications are instantiated through containers.
---Containers instead of VMs: when we are in PaaS context we may focus more on Containers than VMs to decouple PaaS from IaaS.
---PaaS resource management services use the IaaS APIs to specify the number and type of VMs required upon application deployment.
-
--PaaS does not have information about the underlying resources
---In contrary, IaaS does not have information about the running applications.
---No information about the application class or its execution parameters is forwarded to the underlying infrastructure.
-
-
--However, both IaaS and PaaS systems target multi-objective optimizations including primarily cost, performance and energy consumption. These parameters are intrinsically related, thus requiring complex trade-offs to be made between them.
-
-*Status on this research line:
--energy efficiency has been addressed at the IaaS with consolidation techniques.
--no research work has been targeting energy-efficiency at the PaaS.
-
-Scenarios: 
---IaaS decides to migrate a virtual machine (VM) in order to perform a better consolidation.
----However, the VM may end a few seconds later because it will get released by the PaaS.
----The decision to release this VM may have been taken several minutes in advance by the PaaS.
----If this information is not communicated to the IaaS, we take the risk that IaaS will invest previous resources (for example by migrating the VM) without seeing any benefit from this action (because the VM gets shut down just after).
-
---PaaS may help IaaS in performing VM management actions.
----For example, it is often easy at the PaaS level to temporarily redirect one VM’s workload to another by redefining load balancing parameters.
----Offloading a VM for just a few tens of seconds may greatly facilitate IaaS-level management tasks such as VM migration.
-
-PaaS optimization:
--PaaS energy optimization model is an Infrastructure inside another infrastructure optimization model. 
---a new dimension.
---We need to model PaaS optimization in such a way to lead to an optimization at IaaS level. I mean if we are doing Container consolidation can we guarantee an improvement at IaaS layer. This could be a key.
--Containers consolidation is an optimization technique to use less resources.
---Containers consolidation: Containers (applications instances) grouping/clustering to provide better performance avoid resource contention. I need to investigate on this as we progress on CF deployment and experiment.
--Containers scheduling
-
-Coordination:
---Autonomic coordination and loop
---If each layer takes energy efficiency decisions independently
----the operations can lead to resource waste and performance degradation due to uncoordinated actions.
-----negating the benefits of energy awareness
---An architecture to present this coordination, as an autonomic loop model PaaS<--->IaaS
---the bidirectional information sharing opportunities between these cloud layers and the coordinated decisions they can trigger
---coordinated optimization operations: to avoid counterproductive independent optimizations
----IaaS and PaaS should share their energy-related information and coordinate their reconfiguration actions. 
-----This coordination aims at allowing system-level optimizations and trade-offs.
---interact and co-operate.
-
-Application domain considerations:
---VM allocation strategies typically rely on information concerning physical machine capabilities and their usage across the data center. 
----Nevertheless, several factors may impact the performance of VMs, with critical side effects on application performance, user costs and power consumption.
----resource contention: intensive network traffic between a few VMs may lower the available bandwidth across an entire cluster. 
---resource contention aware scheduling
---better resource management at the infrastructure level: enable IaaS schedulers to analyze and exploit a wider spectrum of parameters associated with the application behavior. Thus, as such workload properties are generally opaque to the underlying VM manager, a possible approach is to enable PaaS services to expose them to the infrastructure layer.
---PaaS may facilitate certain VM management actions
---The resource needs of VMs have a potentially heavy impact on the VM migration duration.
----memory-bound VMs lead to very inefficient migration times (Liu et al., 2011).
----IaaS systems avoid migration operations by flagging affected VMs at deployment time.
----\textit{A more fine-grained approach can enable PaaS services to trigger such flags dynamically when an application enters a memory-intensive stage, and allow migration outside these intervals.}
---Execution Time:
----web servers: long-running jobs with specific access patterns. a short-lived VM: a MapReduce job, may raise specific scheduling constraints. 
----many MapReduce jobs: short periods of time, migrating the VMs during application execution may degrade their performance to unacceptable levels
-----migrating the VM may take longer than its actual runtime
----To reduce the time spent during VM migration, the PaaS can be instructed to temporarily decrease the load of the VM, which may entail performance and energy gains.
-
-Elasticity
----elasticity is one of the most appealing cloud features
----the PaaS services may be able to estimate the application requirements in terms of workload peaks.
----anticipation: anticipating application needs and passing them on to the IaaS layer may result in more timely workload adaptation mechanisms.
-
-Cluster Scheduling: Resource Scheduling
--Resource allocation in IaaS clouds is generally based on the VM type and straightforward scheduling policies. 
--Beyond the VM type in terms of required CPUs and memory, an essential parameter is represented by the association of VMs with a specific virtual cluster, and thus, a single application.
--By taking into account this type of hint made available by PaaS-level services, an IaaS provider may change the allocation process of similar VMs. 
---VMs belonging to the same job may be deployed on the same physical machines to benefit from data locality and avoid unnecessary and performance-degrading network traffic.
--knowledge about cluster utilization and node properties may allow the PaaS services to select the most suitable VM types to execute an application, enabling the use of large VMs when the infrastructure comprises high-performance physical machines.
--Adaptive Resource Management
---Equipped with detailed information about the user job, the IaaS layer can yield multiple scheduling options to handle it
---According to user set thresholds (SLA), such as an execution deadline or a given energy budget
----the IaaS resource manager may be extended to delay jobs according to the availability of renewable energy sources
---The user may be presented with several execution plans and the corresponding energy consumption estimations for the same application. 
----He can thus choose the best execution schedule in terms of energy, regardless of a performance loss or a longer execution time.
-
-Workload Peaks
--keeping resource pool for peaks
--How to minimize the impact of such an approach on energy consumption?
---PaaS services may anticipate workload trends and provide this information to the infrastructure level. 
----IaaS schedulers can redirect small bursts to public clouds when the cost of switching nodes on is more than the cost of obtaining remote VMs
----When facing longer-duration workload peaks, the IaaS cloud can automatically adapt the pool of available physical machines, by enabling nodes in advance.
-
-Meters
--Energy Consumption
---PaaS layer has no means to accurately estimate the energy consumption of a given application.
---It is at IaaS level where such predictions can be made
----based on the infrastructure load and the application requirements.
-
--Consequently, such APIs should allow PaaS managers to ask the IaaS provider to flag the activity of specific VMs or groups of VMs as CPU-, IO- or memory-intensive, 
---to predict workload peaks or to provide hints regarding the execution time of groups of VMs that belong to the same job.
-
-
-\subsection{Items}
--Apps versus services
-
--Service Flexibility Definition, model
-
--Apps with variable performance over time
-
--Elastic apps/services
-
--App/service types/domains
-
--App/infrastructure happiness: Working Mode model/definition
-
--Multi-objective: cost, performance, revenue, energy
+%\subsection{Paper Content Formation}
+%PaaS definition:
+%
+%-PaaS provides application developers with runtime environments where applications can be easily deployed and managed in the cloud (Pierre and Stratan, 2012; Dib et al., 2013).
+%-PaaS is an infrastructure inside another infrastructure.
+%-does not provide cloud resources directly.
+%-uses an underlying IaaS layer for resource management.
+%
+%-In PaaS applications are instantiated through containers.
+%--Containers instead of VMs: when we are in PaaS context we may focus more on Containers than VMs to decouple PaaS from IaaS.
+%--PaaS resource management services use the IaaS APIs to specify the number and type of VMs required upon application deployment.
+%
+%-PaaS does not have information about the underlying resources
+%--In contrary, IaaS does not have information about the running applications.
+%--No information about the application class or its execution parameters is forwarded to the underlying infrastructure.
+%
+%
+%-However, both IaaS and PaaS systems target multi-objective optimizations including primarily cost, performance and energy consumption. These parameters are intrinsically related, thus requiring complex trade-offs to be made between them.
+%
+%*Status on this research line:
+%-energy efficiency has been addressed at the IaaS with consolidation techniques.
+%-no research work has been targeting energy-efficiency at the PaaS.
+%
+%Scenarios: 
+%--IaaS decides to migrate a virtual machine (VM) in order to perform a better consolidation.
+%---However, the VM may end a few seconds later because it will get released by the PaaS.
+%---The decision to release this VM may have been taken several minutes in advance by the PaaS.
+%---If this information is not communicated to the IaaS, we take the risk that IaaS will invest previous resources (for example by migrating the VM) without seeing any benefit from this action (because the VM gets shut down just after).
+%
+%--PaaS may help IaaS in performing VM management actions.
+%---For example, it is often easy at the PaaS level to temporarily redirect one VM’s workload to another by redefining load balancing parameters.
+%---Offloading a VM for just a few tens of seconds may greatly facilitate IaaS-level management tasks such as VM migration.
+%
+%PaaS optimization:
+%-PaaS energy optimization model is an Infrastructure inside another infrastructure optimization model. 
+%--a new dimension.
+%--We need to model PaaS optimization in such a way to lead to an optimization at IaaS level. I mean if we are doing Container consolidation can we guarantee an improvement at IaaS layer. This could be a key.
+%-Containers consolidation is an optimization technique to use less resources.
+%--Containers consolidation: Containers (applications instances) grouping/clustering to provide better performance avoid resource contention. I need to investigate on this as we progress on CF deployment and experiment.
+%-Containers scheduling
+%
+%Coordination:
+%--Autonomic coordination and loop
+%--If each layer takes energy efficiency decisions independently
+%---the operations can lead to resource waste and performance degradation due to uncoordinated actions.
+%----negating the benefits of energy awareness
+%--An architecture to present this coordination, as an autonomic loop model PaaS<--->IaaS
+%--the bidirectional information sharing opportunities between these cloud layers and the coordinated decisions they can trigger
+%--coordinated optimization operations: to avoid counterproductive independent optimizations
+%---IaaS and PaaS should share their energy-related information and coordinate their reconfiguration actions. 
+%----This coordination aims at allowing system-level optimizations and trade-offs.
+%--interact and co-operate.
+%
+%Application domain considerations:
+%--VM allocation strategies typically rely on information concerning physical machine capabilities and their usage across the data center. 
+%---Nevertheless, several factors may impact the performance of VMs, with critical side effects on application performance, user costs and power consumption.
+%---resource contention: intensive network traffic between a few VMs may lower the available bandwidth across an entire cluster. 
+%--resource contention aware scheduling
+%--better resource management at the infrastructure level: enable IaaS schedulers to analyze and exploit a wider spectrum of parameters associated with the application behavior. Thus, as such workload properties are generally opaque to the underlying VM manager, a possible approach is to enable PaaS services to expose them to the infrastructure layer.
+%--PaaS may facilitate certain VM management actions
+%--The resource needs of VMs have a potentially heavy impact on the VM migration duration.
+%---memory-bound VMs lead to very inefficient migration times (Liu et al., 2011).
+%---IaaS systems avoid migration operations by flagging affected VMs at deployment time.
+%---\textit{A more fine-grained approach can enable PaaS services to trigger such flags dynamically when an application enters a memory-intensive stage, and allow migration outside these intervals.}
+%--Execution Time:
+%---web servers: long-running jobs with specific access patterns. a short-lived VM: a MapReduce job, may raise specific scheduling constraints. 
+%---many MapReduce jobs: short periods of time, migrating the VMs during application execution may degrade their performance to unacceptable levels
+%----migrating the VM may take longer than its actual runtime
+%---To reduce the time spent during VM migration, the PaaS can be instructed to temporarily decrease the load of the VM, which may entail performance and energy gains.
+%
+%Elasticity
+%---elasticity is one of the most appealing cloud features
+%---the PaaS services may be able to estimate the application requirements in terms of workload peaks.
+%---anticipation: anticipating application needs and passing them on to the IaaS layer may result in more timely workload adaptation mechanisms.
+%
+%Cluster Scheduling: Resource Scheduling
+%-Resource allocation in IaaS clouds is generally based on the VM type and straightforward scheduling policies. 
+%-Beyond the VM type in terms of required CPUs and memory, an essential parameter is represented by the association of VMs with a specific virtual cluster, and thus, a single application.
+%-By taking into account this type of hint made available by PaaS-level services, an IaaS provider may change the allocation process of similar VMs. 
+%--VMs belonging to the same job may be deployed on the same physical machines to benefit from data locality and avoid unnecessary and performance-degrading network traffic.
+%-knowledge about cluster utilization and node properties may allow the PaaS services to select the most suitable VM types to execute an application, enabling the use of large VMs when the infrastructure comprises high-performance physical machines.
+%-Adaptive Resource Management
+%--Equipped with detailed information about the user job, the IaaS layer can yield multiple scheduling options to handle it
+%--According to user set thresholds (SLA), such as an execution deadline or a given energy budget
+%---the IaaS resource manager may be extended to delay jobs according to the availability of renewable energy sources
+%--The user may be presented with several execution plans and the corresponding energy consumption estimations for the same application. 
+%---He can thus choose the best execution schedule in terms of energy, regardless of a performance loss or a longer execution time.
+%
+%Workload Peaks
+%-keeping resource pool for peaks
+%-How to minimize the impact of such an approach on energy consumption?
+%--PaaS services may anticipate workload trends and provide this information to the infrastructure level. 
+%---IaaS schedulers can redirect small bursts to public clouds when the cost of switching nodes on is more than the cost of obtaining remote VMs
+%---When facing longer-duration workload peaks, the IaaS cloud can automatically adapt the pool of available physical machines, by enabling nodes in advance.
+%
+%Meters
+%-Energy Consumption
+%--PaaS layer has no means to accurately estimate the energy consumption of a given application.
+%--It is at IaaS level where such predictions can be made
+%---based on the infrastructure load and the application requirements.
+%
+%-Consequently, such APIs should allow PaaS managers to ask the IaaS provider to flag the activity of specific VMs or groups of VMs as CPU-, IO- or memory-intensive, 
+%--to predict workload peaks or to provide hints regarding the execution time of groups of VMs that belong to the same job.
+%
+%
+%\subsection{Items}
+%-Apps versus services
+%
+%-Service Flexibility Definition, model
+%
+%-Apps with variable performance over time
+%
+%-Elastic apps/services
+%
+%-App/service types/domains
+%
+%-App/infrastructure happiness: Working Mode model/definition
+%
+%-Multi-objective: cost, performance, revenue, energy
 
 %autonomous applications~\cite{kephart-computer2003} to fit the workload through several several execution modes. Elastic computing as the leading concept instantiation in clouds~\cite{x} \\
 %energy adaptive applications that reconfigure their behavior/architecture \ms{No sure about reconfiguring their architecture} according to a energy concerns~\cite{energy-adaptive-apps-OSR12, others} \\
