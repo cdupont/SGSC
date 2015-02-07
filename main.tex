@@ -8,6 +8,9 @@
 \usepackage{url}
 \usepackage{subfig}
 \usepackage{ifthen}
+\usepackage{listings}
+\usepackage{graphvizzz}
+
 % Very convenient to add comments on the paper. Just set the boolean
 % to false before sending the paper:
 \newboolean{showcomments}
@@ -55,6 +58,7 @@ Platform as a Service, Energy management, Flexibility, Scalability
 
 \input{intro}
 \input{sfa}
+\input{IaaSPaaS}
 
 \section{The Energy Adaptive Software Controller}
 
@@ -69,8 +73,6 @@ The EASC allows controlling the software running in data centres in the spatial 
 Working Mode
 A working mode corresponds to a level of performance for the controlled application, such as the number of front-end VMs in the case of a web server application.
 
-
-\section{Collaboration between IaaS and PaaS layers}
 
 \section{Implementation}
 
