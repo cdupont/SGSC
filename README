@@ -1,0 +1,14 @@
+** Prerequistes **
+
+enable Write18 in texlive:
+
+$ echo "shell_escape = t" >> `kpsewhich texmf.cnf`
+
+
+** Build **
+
+To build, just type:
+
+$ make
+
+You should have texlive, R and Rscript installed.
