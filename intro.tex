@@ -4,25 +4,23 @@
 
 A recent study~\cite{koomey2011} showed that, while still growing, the energy consumption of data centres is actually less than previously excepted.
 Electricity used in US data centers in 2010 was significantly lower than predicted by the EPA’s 2007 report to Congress on data centers.
-There is a combination of factors explaining this slow down, among which the application of energy policies in data centres.
+There is a combination of factors explaining this slow down, among which the application of new energy policies in data centres.
 
 This is why we think the attention of researchers in the field of Energy Management in Cloud Computing should shift from the paradigm of "consume less" to the paradigm of "consume better".
 As important energy consumers, it is important that the energy management and policies of data centres prioritize the consumption of renewable energies over brown energies.
 However renewable energies are very variable in time.
 To adapt to such energies, we need to adapt and shift the workload of applications.
+This means reducing the workload when there is not renewable energies available, for example.
 
 In this paper we start to analyse how a PaaS on top of IaaS may change the landscape.
 We think that a PaaS layer brings great potentialities for a better energy management in data centres, because it centralizes and standardizes the scalable deployment of applications.
-Typically, an application manager will issue a command to a PaaS framework (such as CloudFoundry) to scale up or down and application, according to predefined patterns.
-Some frameworks allow to automatize this process: CloudFoundry, for example, provides a languages for auto-scaling.
-This language will define KPI and thresholds that will trigger the scaling operations.
-For example, in the case of a 3-tier web server application, it is possible to describe that if the number of page views per minute goes over a threshold, a new front-end VM should be launched.
+Typically, an application manager will issue a command to a PaaS framework to scale up or down and application, according to predefined patterns.
+Some frameworks allow to automatize this process: Cloudify\footnote{http://www.gigaspaces.com/cloudify-cloud-orchestration/overview}, for example, provides a languages for auto-scaling.
+This language will define KPIs and thresholds that will trigger the scaling operations.
+For example, in the case of a 3-tier web server application, it is possible to describe that if the number of page views per minute goes over a certain threshold, a new front-end VM should be launched.
 
-However, we think that a piece is missing: indeed the framework still have no way to lower the workload when there is no renewable energy, for instance.
-We believe that some part of the flexibility provided to the applications by the PaaS layer should be transferee to an intermediate component called the "autoscaler".
-
-On the one side, the availability of PaaS infrastructure simplifies the understanding of deployed applications in the virtual appliance (e.g. the information on relations between services in different appliances is transparent), on the other it makes more complex the workload management (e.g. containers add a further level of complexity in the modeling of data center resources) and hence it requires a better understanding of implications between the two layers in the energy optimization of used resources.
-The paper will also discuss how the combination of IaaS and PaaS consolidation techniques can improve energy saving and cleverly applied to reduce CO2 energy consumption scaling up and down applications following the curve of green energy availability.
+However, when it comes to the adaptation of the applications workload to the availability of the renewable energies, we think that a piece is missing: indeed the framework still have no way to lower the workload when there is no renewable energy, for instance.
+We believe that some part of the flexibility provided to the applications by the PaaS layer should be transferred to an intermediate component: the "autoscaler".
 
 In this paper we propose the concept of Service Flexibility Agreement (SFA). 
 The SFA is and extended Service Level Agreement (SLA): it includes a description of the flexibility of an application.
@@ -30,6 +28,11 @@ The SLA usually define minimum levels of resources that an application should be
 However, in the context of flexible applications, this is not enough: some applications can accept to have a temporarily reduced performance or shifted activity.
 The SFA defines a simple interface to describe this flexibility between an application and the PaaS framework.
 This will allow an energy-aware PaaS framework to make better decisions and trace-offs.
+
+The paper also discusses how the combination of IaaS and PaaS consolidation techniques can improve energy saving and cleverly applied to reduce CO2 energy consumption scaling up and down applications following the curve of green energy availability.
+
+
+%On the one side, the availability of PaaS infrastructure simplifies the understanding of deployed applications in the virtual appliance (e.g. the information on relations between services in different appliances is transparent), on the other it makes more complex the workload management (e.g. containers add a further level of complexity in the modeling of data center resources) and hence it requires a better understanding of implications between the two layers in the energy optimization of used resources.
 
 
 %A great amount of literature exists on energy saving in data centres.

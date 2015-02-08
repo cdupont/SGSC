@@ -4,7 +4,7 @@ In this section, we introduce the notion of Service Flexibility Agreement (SFA).
 In current PaaS architectures, the framework is granting a certain flexibility to applications.
 For example, an application can ask the PaaS framework to spawn more or less VMs according to its needs.
 However, the flexibility is entirely controlled by the application.
-The intuition behind SFA is to define applications performance level over time with respect to applications Quality of Service and Service Level Agreement (SLA) in such a way to provide some degree of flexibility in applications performance for energy optimization purposes. 
+The intuition behind SFA is to delegate some of the flexibility control to the PaaS framework while still guaranteeing the end user satisfaction.
 
 
 %Cloud computing provides/supports three different concepts Elasticity, Variable Workload, Scalability  ... the intersection of these concepts is the main power of cloud that can be exploited for energy efficiency and energy optimization purposes within cloud infrastructures.
@@ -42,7 +42,31 @@ An example of SFA is the following:
   NegDev: 200 Hz/H
 \end{lstlisting}
 
-With respect to a traditional SLA, the SFA adds two new dimensions: the possibility for the required resources to vary in time, plus the possibility to qualify violations of the required performance.
+\begin{lstlisting}[caption={Working Modes definition}, label={lst:WMs}]
+- WMName: WM1
+    actuator: bin/WMSwitch.sh WM1
+    defaultPower: '300 W'
+    greenPoints: 1
+    maxBusinessPerformance: '100 Page/min'
+- WMName: WM2
+    actuator: bin/WMSwitch.sh WM2
+    defaultPower: '500 W'
+    greenPoints: 0
+    maxBusinessPerformance: '150 Page/min'
+
+\end{lstlisting}
+
+With respect to a traditional SLA, the SFA adds several new dimensions: the possibility for the required resources to vary in time, plus the possibility to qualify violations of the required performance.
+As shown in listing~\ref{lst:SFA}, the SFA defines, for each time frames, a recommended business performance. 
+The business performance is one of the KPIs of the application.
+For example for a web server it's pages served per minutes, for a video transcoding service it will be number of Gbit of video transcoded.
+In practice, the business performance is expressed in Hertz: it's a number of items processed per unit of time.
+We then define a concept called the "Happy points".
+This is an abstraction of the end-user satisfaction.
+An application having zero Happy points mean that the end user is reasonably satisfied.
+That corresponds to the traditional SLA thresholds.
+
+We further define the Working Modes of an application, as shown in listing~\ref{lst:WMs}.
 
 The use case of the SFA is also quite different from the SLA. It is used in the communication between an application and the underlying PaaS framework (while the SLA is used for the communication between the data centre and its clients), as shown in figure~\ref{fig:SFABlock}.
 
