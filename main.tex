@@ -24,6 +24,7 @@
 % One command per author:
 \newcommand{\cd}[1]{\mynote{Corentin}{#1}}
 \newcommand{\ms}[1]{\mynote{Mehdi}{#1}}
+\newcommand{\ff}[1]{\mynote{Fede}{#1}}
 \newcommand{\todo}[1]{\mynote{Todo}{#1}}
 
 \DeclareCaptionType{copyrightbox}
@@ -60,18 +61,29 @@ Platform as a Service, Energy management, Flexibility, Scalability
 \input{sfa}
 \input{IaaSPaaS}
 
-\section{The Energy Adaptive Software Controller}
+%\section{The Energy Adaptive Software Controller}
+%
+%EASC component provides techniques to shift the workload of running applications in time, to match it with the availability (or forecast availability) of renewable energy.
+%The EASC role is to control one application, so as to make it “energy adaptive”, and responsive to the CTRL requests. As such, there should be one EASC configured for each controlled application (as a difference with the DC4ES and CTRL, which are unique in the data centre).
+%The EASC plans the activity and control the performance levels of an specific application so as to follow energy budgets provided by the CTRL.
+%To enable this, the EASC also has to monitor and predict the energy consumption and activity levels of the application.
 
-EASC component provides techniques to shift the workload of running applications in time, to match it with the availability (or forecast availability) of renewable energy. The EASC role is to control one application, so as to make it “energy adaptive”, and responsive to the CTRL requests. As such, there should be one EASC configured for each controlled application (as a difference with the DC4ES and CTRL, which are unique in the data centre). The EASC plans the activity and control the performance levels of an specific application so as to follow energy budgets provided by the CTRL. To enable this, the EASC also has to monitor and predict the energy consumption and activity levels of the application.
+%The EASC concepts are sufficiently generic to be applicable to several domains and computing styles within a data centre.
+%EASC has been instantiated for batch processing, infrastructure management, web services, and VM management.
+%The batch processing EASC manages applications that have typically a fixed amount of work to do during a certain time, such as generating a certain number of reports or applying a virus scan every day.
+%On the contrary, the EASC for web services manages applications that must deliver constantly a service, with various levels of performance.
+%The infrastructure management EASC covers maintenance operations (such as server decommissioning) performed in an energy efficient way in the data centre.
 
-The EASC concepts are sufficiently generic to be applicable to several domains and computing styles within a data centre. EASC has been instantiated for batch processing, infrastructure management, web services, and VM management. The batch processing EASC manages applications that have typically a fixed amount of work to do during a certain time, such as generating a certain number of reports or applying a virus scan every day. On the contrary, the EASC for web services manages applications that must deliver constantly a service, with various levels of performance. The infrastructure management EASC covers maintenance operations (such as server decommissioning) performed in an energy efficient way in the data centre.
+%Finally, the EASC can also be instantiated to pilot Infrastructure as a Service (IaaS) operations such as anonymous VM resource allocation.
 
-Finally, the EASC can also be instantiated to pilot Infrastructure as a Service (IaaS) operations such as anonymous VM resource allocation.
-
-The EASC allows controlling the software running in data centres in the spatial and the temporal dimensions. As such, there is one EASC per software controlled in the data centre. As an input, the EASC receives a list of policies and constraints from the CTRL (the CTRL is described in D3.2). As an intermediate output, the EASC will hand back to the CTRL an “option plan”, which is a collection of possible working modes for the application. The CTRL will then ask the EASC to apply a selected “activity plan”, which consists of the list of the working modes to apply consecutively. Each EASC is then considered as an autonomous system [22] that reacts according to its power budget.
-
-Working Mode
-A working mode corresponds to a level of performance for the controlled application, such as the number of front-end VMs in the case of a web server application.
+%The EASC allows controlling the software running in data centres in the spatial and the temporal dimensions. As such, there is one EASC per software controlled in the data centre.
+%As an input, the EASC receives a list of policies and constraints from the CTRL (the CTRL is described in D3.2).
+%As an intermediate output, the EASC will hand back to the CTRL an “option plan”, which is a collection of possible working modes for the application.
+%The CTRL will then ask the EASC to apply a selected “activity plan”, which consists of the list of the working modes to apply consecutively.
+%Each EASC is then considered as an autonomous system [22] that reacts according to its power budget.
+%
+%Working Mode
+%A working mode corresponds to a level of performance for the controlled application, such as the number of front-end VMs in the case of a web server application.
 
 
 \section{Implementation}
