@@ -1,0 +1,26 @@
+
+\section{Collaboration between IaaS and PaaS layers}
+
+For this solution to work correctly, an enhanced communication between IaaS and PaaS layers is necessary.
+However, this communication should be very carefully designed.
+We argue that transmitting too much information between the two layers would be harmful: this would lead to injecting dependencies between the two layers and finally loosing the separation of concerns.
+
+There are essentially two informations that need to be exchanged, and that will not break the separation of concerns:
+\begin{itemize}
+  \item VM grouping
+  \item VM lifetime
+\end{itemize}
+
+We believe that the VM grouping is an important information that should be transmitted between the PaaS and the IaaS layers.
+Indeed the PaaS layer have a certain degree of knowledge of the applications that are launched.
+If an application is composed of several VMs, it is interesting to keep them together on the same node, because they will probably have the same life cycle.
+Those VMs will probably exchange a lot of informations between them. Furthermore they will probably be switched off together.
+This justifies to try to keep them together on the same node.
+Of course, the IaaS layer shouldn't be aware of the applications that are running in the data centre.
+However, the VM affinity is an information that could be transmitted to the IaaS when a PaaS manager asks for VM creation.
+
+The other information that is worth transmitting is the VM life-time: an estimated duration that the VM will be kept running before being switched off.
+This information is important for the IaaS layer when optimizing the energy consumption of a data centre: indeed to switch off servers it is necessary to migrate VMs.
+However, migrating a VM is an investment, and if the VM is about to be switched off by the PaaS layer, this investment is lost.
+
+Those two informations (VM grouping and VM lifetime) does not break the separation of concerns, because they are expressed in terms of the IaaS VMs only: no deeper knowledge of the running applications is necessary.
