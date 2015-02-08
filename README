@@ -1,5 +1,13 @@
 ** Prerequistes **
 
+Install R and Rscript:
+
+$ sudo apt-get install r-base
+
+Install graphviz:
+
+$ sudo apt-get install graphviz
+
 enable Write18 in texlive:
 
 $ echo "shell_escape = t" >> `kpsewhich texmf.cnf`
@@ -11,4 +19,3 @@ To build, just type:
 
 $ make
 
-You should have texlive, R and Rscript installed.
