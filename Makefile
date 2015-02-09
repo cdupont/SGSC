@@ -3,6 +3,7 @@ main = main
 all:  r pdf
 
 r: 
+	mkdir -p generated
 	cd R; Rscript SFA-candles.R
 
 pdf:
@@ -13,4 +14,4 @@ pdf:
 	pdflatex $(main)
 
 clean:
-	rm -f *.aux *.log *.bbl *.blg *.toc *.lof *.lot *.out $(main).pdf generated/*
+	rm -rf *.aux *.log *.bbl *.blg *.toc *.lof *.lot *.out $(main).pdf generated
