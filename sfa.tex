@@ -27,13 +27,14 @@ The intuition behind SFA is to delegate some of the flexibility control to the P
 \begin{figure}[h]
 \centering
 \includegraphics[width=0.99\linewidth]{generated/SFA-candles.pdf}
-\caption{Software \ms{Software or Service?} Flexibility Agreement representation}
+\caption{Service Flexibility Agreement representation}
 \label{fig:EASC}
 \end{figure}
 
 An example of SFA is as the following:
 \ms{I think you may provide a complete name for variables e.g. RecoBP=Recommended Business Performance, etc.}
-\begin{lstlisting}[caption={SFA example}, label={lst:SFA}]
+\begin{listing}[ht]
+\begin{minted} [frame=single, linenos]{yaml}
 - Start: 00:00
   End: 06:00
   RecoBP: 100 Hz
@@ -44,20 +45,27 @@ An example of SFA is as the following:
   RecoBP: 300 Hz
   PosDev: 50 Hz/H
   NegDev: 200 Hz/H
-\end{lstlisting}
+\end{minted}
+\caption{SFA example}
+\label{lst:SFA}
+\end{listing}
 
-\begin{lstlisting}[caption={Working Modes definition}, label={lst:WMs}]
+\begin{listing}[ht]
+\begin{minted} [frame=single, linenos]{yaml}
 - WMName: WM1
-    actuator: bin/WMSwitch.sh WM1
+    actuator: 'cf scale myApp -i 3'
     defaultPower: '300 W'
-    maxBusinessPerformance: '100 Page/min'
+    maxBusinessPerf: '100 Page/min'
     greenPoints: 1
 - WMName: WM2
-    actuator: bin/WMSwitch.sh WM2
+    actuator: 'cf scale myApp -i 5'
     defaultPower: '500 W'
-    maxBusinessPerformance: '150 Page/min'
+    maxBusinessPerf: '150 Page/min'
     greenPoints: 0
-\end{lstlisting}
+\end{minted}
+\caption{Working Modes example}
+\label{lst:WMs}
+\end{listing}
 
 With respect to a traditional SLA, the SFA adds several new dimensions: the possibility for the required resources to vary in time, plus the possibility to qualify violations of the required performance.
 As shown in listing~\ref{lst:SFA}, for each time frame the SFA defines a recommended business performance. 
