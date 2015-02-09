@@ -13,4 +13,4 @@ pdf:
 	pdflatex $(main)
 
 clean:
-	rm -f *.aux *.log *.bbl *.blg *.toc *.lof *.lot *.out generated/*
+	rm -f *.aux *.log *.bbl *.blg *.toc *.lof *.lot *.out $(main).pdf generated/*
