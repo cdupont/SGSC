@@ -1,0 +1,33 @@
+\section{Optimization}
+\label{sec:optim}
+
+Using the previously described architecture, we can define the optimization to be performed in the data centre.
+We define $DC_{Energy}$, the total consumption of energy of the data centre, $DC_{Happy}$, the total "happiness" of the data centre and finally $DC_{Brown}$ the consumption of brown energies of the data centre.
+
+\begin{equation}
+DC_{Energy} =\sum_{time} \sum_{Apps} P_{WMs}
+\label{eq:DCen}
+\end{equation}
+
+\begin{equation}
+DC_{Happy} =\sum_{time} \sum_{Apps} H_{WMs}
+\label{eq:DChappy}
+\end{equation}
+
+\begin{equation}
+DC_{Brown} =\sum_{time} (\sum_{Apps} P_{WMs} \times R_{Brown})
+\label{eq:DCbrown}
+\end{equation}
+
+The multi-criteria objective followed by the auto-scaler is now the following:
+
+\begin{equation}
+\left\{
+  \begin{array}{rcr}
+    Min & DC_{Energy} \\
+    Max & DC_{Happy}  \\
+    Min & DC_{Brown}  \\
+  \end{array}
+\right.
+\label{eq:DCbrown}
+\end{equation}
