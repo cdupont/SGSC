@@ -1,5 +1,27 @@
 This repository contains a research paper focus on the EASC activities
 
+# Prerequistes
+
+Install R and Rscript:
+
+$ sudo apt-get install r-base
+
+Install graphviz:
+
+$ sudo apt-get install graphviz
+
+Enable Write18 in texlive (must be root):
+
+$ echo "shell_escape = t" >> `kpsewhich texmf.cnf`
+
+
+# Build
+
+To build, just type:
+
+$ make
+
+
 # How-to write
 
 - LaTeX
