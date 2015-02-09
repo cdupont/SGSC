@@ -1,0 +1,27 @@
+\section{Implementation}
+\label{sec:implem}
+
+The use case of the SFA is quite different from the SLA. 
+It is used in the communication between an application and the underlying PaaS framework (while the SLA is used for the communication between the data centre and its clients), as shown in figure~\ref{fig:SFABlock}.
+
+\begin{figure}[h]
+\label{fig:SFABlock}
+\centering
+\caption{SFA block diagram}
+\digraph[scale=0.5]
+{SFABlock}
+{
+   PaaS[shape=rectangle, label="Cloud Foundry"];
+   autoScaler[shape=rectangle, label="Auto-scaler"];
+   loadBalancer[shape=rectangle, label="App load balancer"];
+   loadBalancer->autoScaler[label=" SFA"];
+   autoScaler->PaaS[label=" scale up/down"];
+   PaaS->VM1;
+   PaaS->VM2;
+   PaaS->VM3;
+}
+\end{figure}
+
+In practice, we modify the API of the auto-scaler of Cloud Foundry to accept commands from the application load balancer.
+Instead of just scale-up/scale-down commands, we include a recommended scaling level, together with a positive deviation and a negative deviation, as described in Section~\ref{sec:sfa}.
+This will let an enhanced auto-scaler to optimize the consumption of renewable energies in the data centre, for instance.
