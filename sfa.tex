@@ -4,7 +4,7 @@
 In this section, we introduce the notion of Service Flexibility Agreement (SFA). 
 %Cloud Computing provides highly flexible infrastructures in which resources and software services are provisioned on demand through the concept of elasticity.
 
-In current PaaS architectures, the framework is granting a certain flexibility to applications.
+In current PaaS architectures, the framework grants a certain flexibility to applications.
 For example, an application can ask the PaaS framework to spawn more or less VMs according to its needs.
 However, the flexibility is entirely controlled by the application.
 The intuition behind SFA is to delegate some of the flexibility control to the PaaS framework while still guaranteeing the end user satisfaction.
@@ -27,11 +27,12 @@ The intuition behind SFA is to delegate some of the flexibility control to the P
 \begin{figure}[h]
 \centering
 \includegraphics[width=0.99\linewidth]{generated/SFA-candles.pdf}
-\caption{Software Flexibility Agreement representation}
+\caption{Software \ms{Software or Service?} Flexibility Agreement representation}
 \label{fig:EASC}
 \end{figure}
 
-An example of SFA is the following:
+An example of SFA is as the following:
+\ms{I think you may provide a complete name for variables e.g. RecoBP=Recommended Business Performance, etc.}
 \begin{lstlisting}[caption={SFA example}, label={lst:SFA}]
 - Start: 00:00
   End: 06:00
@@ -59,20 +60,22 @@ An example of SFA is the following:
 \end{lstlisting}
 
 With respect to a traditional SLA, the SFA adds several new dimensions: the possibility for the required resources to vary in time, plus the possibility to qualify violations of the required performance.
-As shown in listing~\ref{lst:SFA}, the SFA defines, for each time frames, a recommended business performance. 
+As shown in listing~\ref{lst:SFA}, for each time frame the SFA defines a recommended business performance. 
 The business performance is one of the KPIs of the application.
-For example for a web server it's pages served per minutes, for a video transcoding service it will be number of Gbit of video transcoded.
-In practice, the business performance is expressed in Hertz: it's a number of items processed per unit of time.
+For example, for a Web server it is the number of pages served per minutes, for a video transcoding service it will be how much Gbit of video transcoded.
+In practice, the business performance is expressed in Hertz: that is a number of items processed per unit of time.
 We then define a concept called the "Happy points", noted "H".
 This is an abstraction of the end-user satisfaction.
-An application having zero Happy points mean that the end user is reasonably satisfied.
-That corresponds to the traditional SLA thresholds.
+An application having zero Happy points means that the end user is reasonably satisfied.
+That corresponds to the traditional SLA threshold.
 Positive Happy points corresponds to "fairly satisfied" (1H) up to "very satisfied" (10H).
 Negative Happy points corresponds to "fairly unsatisfied" (-1H) up to "very unsatisfied" (-10H).
 
 We further define the Working Modes (WM) of an application, as shown in listing~\ref{lst:WMs}.
 A Working Mode corresponds to the level of resource usage for an application.
-In practice this corresponds to a number of VMs.
+In practice, this corresponds to a number of VMs.
 This further corresponds to an average power consumption and an expected business performance. 
 Using the SFA, it is now possible to compute the number of Happy points provided by each WMs.
+
+\ms{I believe more concrete definition is required. We need to establish a better relationship between working mode and SFA. We need to remove green points.}
 
