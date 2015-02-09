@@ -10,6 +10,7 @@
 \usepackage{ifthen}
 \usepackage{listings}
 \usepackage{graphvizzz}
+\usepackage{minted}
 
 % Very convenient to add comments on the paper. Just set the boolean
 % to false before sending the paper:
@@ -28,26 +29,20 @@
 \newcommand{\todo}[1]{\mynote{Todo}{#1}}
 
 \DeclareCaptionType{copyrightbox}
-\setlength{\belowcaptionskip}{-10pt}
-\setlength{\abovecaptionskip}{-10pt}
+%\setlength{\belowcaptionskip}{-10pt}
+%\setlength{\abovecaptionskip}{-10pt}
+\setlength\partopsep{-\topsep}
 
 \begin{document}
 
-\title{PaaS paper}
+\title{Optimized PaaS Architectures: Qualifying the Flexibility of Applications}
 
-\author{\IEEEauthorblockN{Authors Name/s per 1st Affiliation (Author)}
-\IEEEauthorblockA{line 1 (of Affiliation): dept. name of organization\\
-line 2: name of organization, acronyms acceptable\\
-line 3: City, Country\\
-line 4: Email: name@xyz.com}
-\and
-\IEEEauthorblockN{Authors Name/s per 2nd Affiliation (Author)}
-\IEEEauthorblockA{line 1 (of Affiliation): dept. name of organization\\
-line 2: name of organization, acronyms acceptable\\
-line 3: City, Country\\
-line 4: Email: name@xyz.com}
+\author{\IEEEauthorblockN{Corentin Dupont, Mehdi Sheikhalishahi, Federico Facca}
+\IEEEauthorblockA{Create-Net\\
+Trento, Italy\\
+\{cdupont, msheikhalishahi, ffacca\}@create-net.org
 }
-
+}
 
 \maketitle
 \begin{abstract}
