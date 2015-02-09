@@ -28,7 +28,8 @@
 \newcommand{\todo}[1]{\mynote{Todo}{#1}}
 
 \DeclareCaptionType{copyrightbox}
-
+\setlength{\belowcaptionskip}{-10pt}
+\setlength{\abovecaptionskip}{-10pt}
 
 \begin{document}
 
@@ -60,6 +61,19 @@ Platform as a Service, Energy management, Flexibility, Scalability
 \input{intro}
 \input{sfa}
 \input{IaaSPaaS}
+\input{optim}
+\input{implem}
+\input{relworks}
+\input{conclusion}
+
+\section*{Acknowledgments}
+
+This work has been carried out within the European Projects DC4Cities (FP7-ICT-2013.6.2).
+
+\bibliographystyle{abbrv}
+\bibliography{biblio}
+
+\end{document}
 
 %\section{The Energy Adaptive Software Controller}
 %
@@ -84,9 +98,6 @@ Platform as a Service, Energy management, Flexibility, Scalability
 %
 %Working Mode
 %A working mode corresponds to a level of performance for the controlled application, such as the number of front-end VMs in the case of a web server application.
-
-
-\section{Implementation}
 
 
 %\section{cloud transformation}
@@ -120,16 +131,3 @@ Platform as a Service, Energy management, Flexibility, Scalability
 %EASC-OSApp1: intermediates between EASC and OS for application App1. It receives activity plan and enact it by invoking OS resizing operation (Nova API), application level scaling.
 %CF is hosted in OS via CF BOSH component.
 %IaaS optimization:
-
-
-\input{relworks}
-\input{conclusion}
-
-\section*{Acknowledgments}
-
-This work has been carried out within the European Projects DC4Cities (FP7-ICT-2013.6.2).
-
-\bibliographystyle{abbrv}
-\bibliography{biblio}
-
-\end{document}

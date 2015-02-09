@@ -1,4 +1,6 @@
 \section{Service Flexibility Agreement}
+\label{sec:sfa}
+
 In this section, we introduce the notion of Service Flexibility Agreement (SFA). 
 
 In current PaaS architectures, the framework is granting a certain flexibility to applications.
@@ -46,14 +48,13 @@ An example of SFA is the following:
 - WMName: WM1
     actuator: bin/WMSwitch.sh WM1
     defaultPower: '300 W'
-    greenPoints: 1
     maxBusinessPerformance: '100 Page/min'
+    greenPoints: 1
 - WMName: WM2
     actuator: bin/WMSwitch.sh WM2
     defaultPower: '500 W'
-    greenPoints: 0
     maxBusinessPerformance: '150 Page/min'
-
+    greenPoints: 0
 \end{lstlisting}
 
 With respect to a traditional SLA, the SFA adds several new dimensions: the possibility for the required resources to vary in time, plus the possibility to qualify violations of the required performance.
@@ -61,26 +62,16 @@ As shown in listing~\ref{lst:SFA}, the SFA defines, for each time frames, a reco
 The business performance is one of the KPIs of the application.
 For example for a web server it's pages served per minutes, for a video transcoding service it will be number of Gbit of video transcoded.
 In practice, the business performance is expressed in Hertz: it's a number of items processed per unit of time.
-We then define a concept called the "Happy points".
+We then define a concept called the "Happy points", noted "H".
 This is an abstraction of the end-user satisfaction.
 An application having zero Happy points mean that the end user is reasonably satisfied.
 That corresponds to the traditional SLA thresholds.
+Positive Happy points corresponds to "fairly satisfied" (1H) up to "very satisfied" (10H).
+Negative Happy points corresponds to "fairly unsatisfied" (-1H) up to "very unsatisfied" (-10H).
 
-We further define the Working Modes of an application, as shown in listing~\ref{lst:WMs}.
+We further define the Working Modes (WM) of an application, as shown in listing~\ref{lst:WMs}.
+A Working Mode corresponds to the level of resource usage for an application.
+In practice this corresponds to a number of VMs.
+This further corresponds to an average power consumption and an expected business performance. 
+Using the SFA, it is now possible to compute the number of Happy points provided by each WMs.
 
-The use case of the SFA is also quite different from the SLA. It is used in the communication between an application and the underlying PaaS framework (while the SLA is used for the communication between the data centre and its clients), as shown in figure~\ref{fig:SFABlock}.
-
-\begin{figure}[h]
-\label{fig:SFABlock}
-\centering
-\caption{SFA block diagram}
-\digraph
-[scale=0.5]{SFAblock}
-{
-   PaaS[shape=rectangle];
-   autoScaler[shape=rectangle];
-   loadBalancer[shape=rectangle];
-   loadBalancer->autoScaler[label="SFA"];
-   autoScaler->PaaS[label="scale up/down"];
-}
-\end{figure}
