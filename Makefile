@@ -13,5 +13,11 @@ pdf:
 	pdflatex $(main)
 	pdflatex $(main)
 
+install:
+	sudo apt-get install python-pygments
+	sudo apt-get install r-base
+	sudo apt-get install graphviz
+	sudo echo "shell_escape = t" >> /etc/texmf/web2c/texmf.cnf
+
 clean:
 	rm -rf *.aux *.log *.bbl *.blg *.toc *.lof *.lot *.out $(main).pdf generated
