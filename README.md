@@ -1,14 +1,11 @@
-This repository contains a research paper focus on the EASC activities
+This repository contains a research paper focus on PaaS activities.
 
 # Prerequistes
 
-Install R and Rscript:
+You must have the following installed: R, Rscript, graphviz, Python, Pygments.
+To install them, type:
 
-$ sudo apt-get install r-base
-
-Install graphviz:
-
-$ sudo apt-get install graphviz
+$ make install
 
 Enable Write18 in texlive (must be root):
 
