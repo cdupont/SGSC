@@ -1,10 +1,8 @@
-\section{Implementation}
+\section{Implementation \& Optimization}
 \label{sec:implem}
 
-The use case of the SFA is quite different from the SLA. 
-It is used in the communication between an application and the underlying PaaS framework, while the SLA is used for the communication between the data centre and its clients, as shown in figure~\ref{fig:SFABlock}.
+The SFA is used in the communication between an application and the underlying PaaS framework (while the SLA, on the contrary, is used for the communication between the data centre and its clients), as shown in figure~\ref{fig:SFABlock}.
 
-\ms{Perhaps would be better to use 'App performance scaler' instead of 'App load balancer'}
 \begin{figure}[h]
 \label{fig:SFABlock}
 \centering
@@ -12,7 +10,7 @@ It is used in the communication between an application and the underlying PaaS f
 {SFABlock}
 {
    PaaS[shape=rectangle, label="Cloud Foundry"];
-   autoScaler[shape=rectangle, label="Auto-scaler"];
+   autoScaler[shape=rectangle, label="Optimizer"];
    loadBalancer[shape=rectangle, label="Application"];
    VM1[label="FE VM1"];
    VM2[label="FE VM2"];
@@ -26,6 +24,7 @@ It is used in the communication between an application and the underlying PaaS f
 \caption{SFA block diagram}
 \end{figure}
 
-In practice, we modify Cloud Foundry auto-scaler API to accept commands from the application load balancer.
-Instead of just scale-up/scale-down commands, we include a recommended scaling level, together with a positive deviation and a negative deviation, as described in Section~\ref{sec:sfa}.
-This will let an enhanced auto-scaler to optimize the energy consumption in the data centre. In addition, if the data center uses renewable energies auto-scaler can be adaptive to the availability of renewable energies.
+In practice, we add a component in the Cloud Foundry stack called the "Optimizer".
+This component (also called "auto-scaler"), accepts commands from the application load balancer.
+Instead of just scale-up/scale-down commands as it is the case currently, we include a recommended scaling level, together with a positive deviation and a negative deviation, as described in Section~\ref{sec:sfa}.
+This will let the Optimizer to optimize according to multiple criteria: 1) the energy consumption in the data centre, 2) the global happiness of the applications (the sum of all happy points granted to applications) and finally 3) the usage of renewable energies.
