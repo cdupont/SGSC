@@ -4,7 +4,8 @@
 
 For this solution to work correctly, an enhanced communication loop between IaaS and PaaS layers is necessary.
 However, this communication should be very carefully designed.
-We argue that transmitting too much information between the two layers would be harmful: this would lead to injecting dependencies between the two layers and finally loosing the separation of concerns. \ms{'loosing the separation of concerns' is not clear, need to better define 'the separation of concerns'}
+We argue that transmitting too much information between the two layers would be harmful: this would lead to injecting dependencies between the two layers and finally loosing the separation of concerns established by IaaS/PaaS.
+\ms{'loosing the separation of concerns' is not clear, need to better define 'the separation of concerns'}
 
 There are essentially two types of information that need to be exchanged, and that will not break the separation of concerns:
 \begin{itemize}
@@ -12,21 +13,20 @@ There are essentially two types of information that need to be exchanged, and th
   \item VM life-time
 \end{itemize}
 
-We believe that the VM/container grouping is an important information that should be transmitted between the PaaS and the IaaS layers.
+We believe that the VM grouping is an important information that should be transmitted between the PaaS and the IaaS layers.
 Indeed the PaaS layer has a certain degree of knowledge about the applications that are deployed on the cloud.
-If an application is composed of several VMs/containers, it would be beneficial to keep them together on the same node at the IaaS layer, because they will probably have the same life cycle.
-Those VMs/containers will probably exchange a lot of information among them. Furthermore, they will probably be switched off together.
+If an application is composed of several VMs, it is beneficial to keep them together on the same node as much as possible, because they will probably have the same life cycle.
+Those VMs will probably exchange a lot of information among them.
+Furthermore, they will be switched off together when the application is terminated.
 This justifies to keep them together on the same node.
 Of course, the IaaS layer shouldn't be aware of the applications that are running in the data centre.
-However, the VM affinity is an information that could be transmitted to the IaaS when a PaaS manager asks for VM creation during application deployment.
+However, the VM affinity is an information that could be transmitted to the IaaS when a PaaS manager asks for VMs creation during application deployment.
 
-The other information that is worth transmitting is the VM (application) life-time: an estimated duration that the VM will be kept running before being switched off.
+The other information that is worth transmitting from the PaaS to the IaaS is the VM life-time: an estimated duration that the VM will be kept running before being switched off.
 This information is important for the IaaS layer when optimizing the energy consumption of a data centre through VM consolidation: indeed to switch off a server it is necessary to migrate all VMs running on that server.
 However, migrating a VM is an investment, and if the VM is about to be switched off by the PaaS layer, this investment is lost.
+Those two information transmission (VM grouping and VM life-time) does not break the separation of concerns, because they are expressed in terms of the IaaS VMs only: no deeper knowledge of the running applications is necessary.
 
-Those two information (VM grouping and VM life-time) does not break the separation of concerns, because they are expressed in terms of the IaaS VMs only: no deeper knowledge of the running applications is necessary.
-
-% From Federico's email message
 In PaaS, application execution VMs are containers.
 That is they may contain more than a single application.
 Applications can easily scale horizontally and vertically. 
@@ -34,14 +34,15 @@ Thus, we may assume that by scaling down applications we may be able to reduce c
 This of course applies, if as the consequence of scaling down application, the number of application execution VMs will be reduced as well.
 This is the first consolidation stage within PaaS layer.
 
+Nonetheless, in line with VM consolidation at the IaaS layer, PaaS can provide some information for more optimized applications instances (containers) consolidation within VMs. 
+These information include application life-time, applications affinity. 
+As a result, PaaS layer in cooperation with IaaS layer consolidates applications instances into the least number of VMs.
+
+
+
 %Recall that being applications in containers, for each app execution VM, you have more applications. So there may be the case that App instance 1 is hosted in App Execution VM 1 and App instance 2 is in App Execution VM 2, so scale App only to instance 1, you can turn off App Execution VM 2.
 
 %VMs consolidation, containers consolidation
-Nonetheless, in line with VM consolidation at the IaaS layer, PaaS can provide some information for more optimized applications instances (containers) consolidation within VMs. 
-These information include application life-time, applications affinity. 
-As a result, PaaS layer in cooperation with IaaS layer consolidates applications instances into the least number of VMs.%; this is the first consolidation stage.
-
-
 %1. On the applications VM side, a VM can provide resource capacities to more than an application. We need to understand how we can optimize applications instances mapping to VMs. I think it can be achieved via defining optimized VM flavours in OS infrastructure according to applications needs, resource capacity requirements, etc.
 
 % Not sure if this is applicable if we have running applications in different VMs. Perhaps, something like "migration" of services [4] can help. We need to see if this happens automatically via CloudFoundry after applications scaling down/up operations.
