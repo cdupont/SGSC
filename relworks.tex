@@ -2,39 +2,45 @@
 \section{Related Works}
 \label{sec: relworks}
 \cd{in a paper of 4 pages, related works should be very short: I'd say half a page.}
-%EE
 
-%IaaS EE
-%-VM consolidation %-Scheduling
-%History of energy optimization in virtualized datacenters, in a single datacenter
 Workload consolidation is a powerful means to improve IT efficiency and reduce power consumption.
 VM consolidation approaches to reduce energy consumption at IaaS layer have been explored in many recent papers \cite{Cardosa} \cite{ITProf1} \cite{Schroder} \cite{Hermenier2009} \cite{sheikhalishahi_energy_2011} \cite{sheikhalishahi_multi-capacity_2014} \cite{dupont2015plug4green}.
 
-%As a recent development in this field, in \cite{sheikhalishahi_multi-capacity_2014}, authors presented a multi-resource scheduling technique to provide a higher degree of consolidation in multi-dimensional computing systems.
-
-%-Scaling operation, Service Flexibility Agreement
 In addition, there are energy efficient solutions based on scaling operations (scale up/down application) based on applications performance metrics.
 Although these proposals reduce the energy footprint of applications and cloud infrastructures, they do not model the applications performance trend to finely define a trade-off between applications Quality of Service and energy footprint.
 
-%Renewable energy availability can estimate a good measure to provide a good consolidation degree.
 Autonomic Computing has been exploited in the design of cloud computing architectures in order to devise autonomic loops aiming at providing coordinated actions among cloud layers for efficiency measures, turning each layer of the cloud stack more autonomous, adaptable and aware of the runtime environment \cite{alvares_de_oliveira_synchronization_2012} \cite{de_oliveira_self-management_2012}  \cite{de_oliveira_framework_2013}.
 
 In order to reach a global and efficient state due to conflicting objectives, autonomic loops need to be synchronized.
 In \cite{alvares_de_oliveira_synchronization_2012}, authors proposed a generic model to synchronize and coordinate autonomic loops in cloud computing stack. 
 The feasibility and scalability of their approach is evaluated via simulation-based experiments on the interaction of several self-adaptive applications with a common self-adaptive infrastructure.
 
-
-%In \cite{de_oliveira_self-management_2012}, authors propose a self-adaptation approach that considers both application internals and system to reduce the energy footprint in cloud infrastructure. Each application and the infrastructure are equipped with their own control loop, which allows them to autonomously optimize their executions. Simulations show that the approach may lead to appreciable energy savings without interfering on application provider revenues.
-
 In addition to elasticity, scalability is another major advantage introduced by the cloud paradigm.
 In \cite{vaquero_dynamically_2011}, automated application scalability in cloud environments are presented.
 Authors highlight challenges that will likely be addressed in new research efforts and present an ideal scalable cloud system.
 
+\cite{carpen-amarie_towards_2014} proposes a co-design of IaaS and PaaS layers for energy optimization in the cloud. The paper outlines the design of interfaces to enable cross-layer cooperation in clouds. This position paper claims that significant energy gains could be obtained by creating a cooperation API between the IaaS layer and the PaaS layer. Authors discuss two complementary approaches for establishing such cooperation: cross-layer information sharing, and cross-layer coordination.
+
+
+%EE
+
+%IaaS EE
+%-VM consolidation %-Scheduling
+%History of energy optimization in virtualized datacenters, in a single datacenter
+
+%Renewable energy availability can estimate a good measure to provide a good consolidation degree.
+
+%As a recent development in this field, in \cite{sheikhalishahi_multi-capacity_2014}, authors presented a multi-resource scheduling technique to provide a higher degree of consolidation in multi-dimensional computing systems.
 % However, there are some important pending issues before making the dreamed automated scaling for applications come true. 
 %We present relevant efforts at the edge of state of the art technology, providing an encompassing overview of the trends they each follow. 
 
 %PaaS-IaaS
-\cite{carpen-amarie_towards_2014} proposes a co-design of IaaS and PaaS layers for energy optimization in the cloud. The paper outlines the design of interfaces to enable cross-layer cooperation in clouds. This position paper claims that significant energy gains could be obtained by creating a cooperation API between the IaaS layer and the PaaS layer. Authors discuss two complementary approaches for establishing such cooperation: cross-layer information sharing, and cross-layer coordination.
+
+
+
+%In \cite{de_oliveira_self-management_2012}, authors propose a self-adaptation approach that considers both application internals and system to reduce the energy footprint in cloud infrastructure. Each application and the infrastructure are equipped with their own control loop, which allows them to autonomously optimize their executions. Simulations show that the approach may lead to appreciable energy savings without interfering on application provider revenues.
+%-Scaling operation, Service Flexibility Agreement
+
 
 %PaaS EE
 %Containers
