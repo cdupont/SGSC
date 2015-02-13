@@ -15,7 +15,7 @@
 % Very convenient to add comments on the paper. Just set the boolean
 % to false before sending the paper:
 \newboolean{showcomments}
-\setboolean{showcomments}{true}
+\setboolean{showcomments}{false}
 \ifthenelse{\boolean{showcomments}}
 { \newcommand{\mynote}[2]{
     \fbox{\bfseries\sffamily\scriptsize#1}
@@ -56,7 +56,6 @@ Platform as a Service, Energy Management, Flexibility, Scalability
 \input{intro}
 \input{sfa}
 \input{IaaSPaaS}
-\input{optim}
 \input{implem}
 \input{relworks}
 \input{conclusion}
