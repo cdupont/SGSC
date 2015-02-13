@@ -10,7 +10,7 @@ sdu=c(20, 100, 20, 20)
 epsilon=.2
 
 pdf(paste("../generated/SFA-candles.pdf"))
-plot(hours, bizPerf, ylim=c(0, 450), xlim=c(0, 24), xaxs="i", yaxs="i")
+plot(hours, bizPerf, ylim=c(0, 450), xlim=c(0, 24), xaxs="i", yaxs="i", xlab="Time (Hour of the day)", ylab="Business Performance (Hertz)")
 lines(hours, bizPerf, lty=1, type="s")
 segments(devHours, bizPerf-sdd , devHours, bizPerf+sdu)
 segments(devHours-epsilon, bizPerf-sdd, devHours+epsilon, bizPerf-sdd)
