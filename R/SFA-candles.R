@@ -16,4 +16,6 @@ segments(devHours, bizPerf-sdd , devHours, bizPerf+sdu)
 segments(devHours-epsilon, bizPerf-sdd, devHours+epsilon, bizPerf-sdd)
 segments(devHours-epsilon, bizPerf+sdu, devHours+epsilon, bizPerf+sdu)
 
-
+text(x=6, y=100, pos=4, labels="RecoBP :|");
+text(x=1, y=130, pos=4, labels="PosDev :)");
+text(x=3, y=50,  pos=4, labels="NegDev :(");
