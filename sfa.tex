@@ -3,7 +3,7 @@
 
 In current PaaS architectures, the framework grants a certain flexibility to applications.
 For example, an application can ask the PaaS framework to spawn more or less VMs or Linux containers\footnote{http://docs.cloudfoundry.org/concepts/architecture/warden.html} according to its needs.
-However, the flexibility is entirely controlled by the application.
+However, the flexibility is entirely controlled by the application and/or the application owner.
 The intuition behind SFA is to delegate some of the flexibility control to the PaaS framework while still guaranteeing the end user satisfaction.
 With respect to a traditional SLA, the SFA adds a few new dimensions: the possibility for the required resources to vary in time, plus the possibility to qualify violations of the required performance.
 
