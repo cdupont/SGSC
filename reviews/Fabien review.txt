@@ -1,0 +1,94 @@
+** abstract **
+was to reduce
+this had an effect, pas de parenthèse
+
+This calls ...
+Je ne vois pas en quoi.
+Ton argumentaire est dans le mauvais ordre. Le consume better est lié à la volatilité des energies green
+
+
+* Introduction
+Même remarque pour le this is why we think. Le dessus est trop vague. Rien au dessus ne me fait penser au besoin d'un changement de paradigme. Ce paragraphe est à l'envers. Toujours présenter le problème avant la solution
+
+3eme paragraphe. Tu ne commences pas à dire pourquoi c'est à ce niveau qu'il faut agir. "change the landscape" ne veut rien dire c'est une expression de vendeur. Ce paragraphe est bien mais il pourrait juste décrire comment le PaaS marche. Il est trop tôt pour annoncer ce que tu vas faire car tu n'as même pas enoncer le problème.
+
+Le 4eme paragraphe fait son rôle pour enoncer une problématique, mais le problème est le manque d'intégration IaaS/PaaS a l'origine. Pourquoi ne l'énonce tu pas clairement ? Btw. la partie PaaS permet très bien de postpone ou de scale-down (c'est son rôle).
+Puis la notion de postpone/delay peut très bien ce gerer avec des worker queues: en fonction du nombre de tâches en attente, on augmente le nombre de worker. C'est le mécanisme "cloud" adapté au batch processing.
+Insiste sur la cause, non les mécanismes. Les mécanismes sont donc la, mais par contre, ils ne sont pas utilisés à l'initiative de la couche IaaS car trop cloisonné dans les règles d'élasticité propre au PaaS ?
+
+
+"We believe that the PaaS paradigm should be enhanced to better describe the flexibility of applications in a centralized and standardized way."
+-> la description n'a rien a voir avec le paradigme. Centralized & standardized sortent de nulle part. Vu que ca clos le paragraphe, ca ressemble à des challenges mais pas ceux traités dans le papier. D'ailleurs, quels sont les challenges à remplir ? En quoi c'est un travail non évident qui nécessite de la recherche ?
+
+Les exemples d'applications n'ont rien à faire dans le dernier paragraphe. Tu dois les mettre plus tôt pour motiver ton approche (le problème avant la solution)
+
+Dans l'abstract & l'intro trop de choses sont mélangés. Ren energy flexibilité, ...
+Le papier est sur la flexibilité mais tu parles d'abord du pitch sur l'energie renouvellables et le consume better.
+Après il y a l'amalgame entre les mécanismes pour la flexibilité et les acteurs les utilisant
+
+** Service Flexibility agreement **
+ 1er para ok qui résume bien ce que tu veux proposer
+Manquement:
+- qui définit précisement ces SFAs ?
+- générique par type d'application (service|batch) ou réellement propre à chaque application (transcoding, site web, ....)
+
+"plus the possibility to qualify violations of the required performance."
+-> ca fait parti des bases des SLA: metriques de perf, % d'activation, pénalité (http://aws.amazon.com/fr/ec2/sla/)
+
+
+La figure 1 pourrait illustrer ton discour, mais on ne comprends rien en la lisant. On voit que c'est un truc inventé complètement. Les smiley n'aident pas non plus. Donc au final,
+on pourrait très bien la remplacer par 3 lignes de textes indiquant simplement que la notion de seuil est transformé en un interval annoté pour indiquer le taux de satisfaction.
+
+Ta notion de timeframe tombe du ciel. Pourquoi on optimise en timeframe ? quel type de timeframe ? 
+Hz est une mauvaise unité. En quoi ta métrique est une fréquence ? C'est un intervalle de tolérance par time-frame.
+
+Web Server: nombre de pages par minutes.
+Non. La seule unité de perf pour les services web c'est la latence. Le reste c'est une unité commercial pour voir si tu est connu.
+Déjà discuté de cette situation avec HP. Ce n'est pas une métrique de performance car ton webservice n'est pas responsable du nombre de pages vues. Ce sont tes commerciaux.
+Par contre la latence est ta métrique business. Tu scale up/down en fonction des variations de latence, de ta charge CPU/IO (règles d'auto-elascitié par défaut pour EC2 par exemple)
+
+Happy point. Déjà discuté. chez toi c'est une métrique principale, mais elle n'est reliée à aucune métrique du cloud. Que veux tu donc en faire ? Comment l'intégrer dans un système de décision.
+"Utilisateur content"/"Utilisateur pas content" -> et alors ?
+
+"working modes" -> ca sort de nul part, c'est complètement inexistant dans la litterature et non naturel dans un service auto-scalable (on s'en fiche de labellisé les modes d'execution qd on fait de l'elasticité, on regarde sur le nombre d'élements). Il faut en dire plus et surtout pourquoi il est nécessaire et logique de passer par cette notion.
+'defaultPower' ? sort de nulle part. Complètement hors de propos pour le client d'un PaaS qui cherche des services. A propos pour des contructeurs de datacenters offrants de la place dans les racks uniquement (c’est effectivement le vocabulaire qui est utilisé chez eux). Le defaultPower doit être caché au client. A la charge de l'infra de le calculer.
+
+
+Je ne vois pas l'intéret du listing 1
+
+"Using the SFA, it is now possible to compute the number of Happy points provided by each WM for each time slot." et alors ? voir remarque précédente sur les happy points. 
+
+** Collaboration **
+We argue that transmitting too much information between the two layers would be harmful: this would lead to injecting dependencies between the two layers and finally loosing the separation of concerns established by IaaS/PaaS.
+-> houla le lien avec l'injection de dépendance est strange.
+
+Je n'ai rien compris à cette section, aucun lien avec la notion de flexibilité ou de SFA.
+"If an application is composed of several VMs, it is beneficial to keep them together on the same node as much as possible, because they will probably have the same life cycle."
+-> ou pas si c'est des réplicas. On veut justement les mettre sur des noeuds différents pour des problèmes de tolérance au pannes
+En quoi c'est une collaboration. C'est juste une descente d'information
+
+VM lifetime
+-> propre aux VM batch à la rigeur. Pas VM service. Même remarque qu'avant. Aucun lien avec SFA. Ce n'est pas une collaboration
+
+Paragraphe final. Ce n'est pas une coopération. le PaaS minimise les VMs mais il ne fait pas de deal avec le IaaS.
+Pourquoi ne pas remonter un use case ou justement l'IaaS initie des scales-up /scale-down en fonction de la disponibilité des énergies green ? Ce n'est pas le fil rouge du papier avec la notion de happy point ?
+
+** Implementation **
+Non, design uniquement
+
+... called the ”Optimizer”. This component (also called ”auto-scaler”) ...
+Sur la même ligne, tu donnes déjà 2 noms à ton système. Pourquoi pas 1 ? Vu la taille de ta section, est-il réellement utile de le nommer ?
+Ca serait quand même bien ici de dire en quoi l'implem est un challenge, que ca nécessite du travail, ...
+Ca fait une section bien vide de contenu. Le schéma ne sert pas à grand chose.
+
+* Related works *
+La partie autonomic ne sert à rien. Ton systeme est autonome ? 
+Pourquoi tu ne te compares pas par rapport à [1],[13],[3] ? surtout 3 qui fait de la collaboration
+Giovanni parlait des liens que cela avait avec les "green-slas". Tu n'en parles pas non plus.
+
+Regarde aussi "Towards QoS-Oriented SLA Guarantees for Online Cloud". Ton papier est sur les SLA, regarde ce qui se fait côté SLA en recherche
+
+Dans ton papier, il te faut un exemple fil rouge qui montre que ta solution en théorie permettrait de mieux utiliser de l’énergie verte avec le consentement de l’utilisateur.
+Pour l’instant y’a pas ca, y’a juste un graphe random, un fichier de configuration et un appel à l’imagination pour les reviewers. Reprends une partie des trials HP par exemple avec la situation de l’excès de l’énergie et du manque d’énergie verte.
+
+

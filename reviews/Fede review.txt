@@ -1,0 +1,116 @@
+
+abstract:
+
+the current start may put us in trouble, experts may argue that the energy saving increase
+in large datacenter, it is mainly unrelated to the datacenter management layer, but mostly with the advancements on the
+hardware architecture and data-center design (free-cooling and similar techniques)
+
+I actually recall we spoke about energy budget to generalize the thing. by pushing only on the renewable issue,
+rather than generalizing, you undermine your own work, which is a pity. also, we well know that unless you have two separate
+lines one green and one brown the all discussion is purely academic. which may risk to put our paper in a weak position
+
+also we should stress that we show how paas and haas relates, and how their combined management - thanks to the knowledge of relation between vm / containers - can
+improve energy saving guaranteeing a certain qos tradeoff.
+
+in the end with a bit of better selling here and there,  this can be fixed without too much rework
+
+
+introduction ->
+the greet opportunities are not about the centralization and standardization of the scalability of layers, but about the knowledge and control (with more or
+less automation) of the application architecture and behavior
+
+i am not sure what you mean by “standardize" - which may be misunderstood by reader thinking to real standards
+
+reading the intro it seems that we focus on SFA, I would present better:
+
+1 -> we want to improve optimization of energy budget usage by applications
+2 -> modern applications are hosted in paas+iaas architectures, this provides, without too much efforts,
+       interesting insights on how the application is structure and responds to SLA requirements
+3 -> if we “relax” sla making them flexible according to a dynamic energy budget, thanks to paas + iaas
+       optimization techniques, we can easily achieve a defined SFA by works on paas layer
+      (reduce/increase workers for a given tier) and iaas layer (consolidate workers to free servers taking
+       into account application architecture).
+
+
+
+sfa->
+
+the section looks sound, some minor remarks
+
+"while giving more that a threshold will not have
+any perceptible impact on the end user.”
+
+i suspect something is missing, “than that threshold”?
+
+what you mean by “default power consumption” is this a threshold, or this a value you measured for that working mode?
+-> clarify
+
+RecoBP
+-> can we find a better name? we use only positive and negative deviation for the other elements (i.e. we do not say positive deviation from the recommended BP)
+can this be just “reference value” , “threshold” or something similar?
+
+not really important but if you have some idea on how to adjust it will not harm
+
+paas - iaas
+
+i would call this section “relation” rather than collaboration
+
+i think we need a bit of reordering (before discussing about information exchange,
+let’s present the context):
+1 - paas control resources offered by iaas to deploy applications
+2 - paas provides knowledge on the architecture of application
+     and how given SLA can be achieved by playing with layers scaling up and down
+->
+3 - you can achieve better performance by “consolidating” VMs of the same application
+4 - you can reduce usage of VMs (and hence energy consumption) for a given
+     application by scaling up and down a given tier. if tiers are distributed “cleverly”
+    across servers you get: i) ha of the application; ii) reduced cost to consolidate (you turn
+    off instances on “secondary server” without need of “reconsolidating” apps)
+
+maybe a figure may be of help to visualized the concept.
+
+
+In PaaS, application execution VMs are containers. That
+
+-> In some PaaS frameworks, application workers are hosted in containers (i.e. …)
+    a single VM may contain more than a worker.
+
+all this part reads so so, hard to understand, I suggest to simplify the sentences,
+and explain what is a container shortly and do not mismatch VMs = containers
+as it seems to read in some parts.
+
+
+"The SFA is used in the communication between an
+application and the underlying PaaS framework (while the
+SLA, on the contrary, is used for the communication between
+the data centre and its clients), as shown in figure ??.”
+
+which figure? sla is not mentioned in any figure.
+
+i think we need to provide a full figure showing who controls who (where is the iaas? why we put
+cloudfoundry in the picture if this was never mentioned before?)
+
+related works
+
+"[3] proposes a co-design of IaaS and PaaS layers for
+energy optimization in the cloud. The paper outlines the
+design of interfaces to enable cross-layer cooperation in
+clouds. This position paper claims that significant energy
+gains could be obtained by creating a cooperation API
+between the IaaS layer and the PaaS layer. Authors discuss
+two complementary approaches for establishing such
+cooperation: cross-layer information sharing, and cross-layer
+coordination.”
+
+somehow, this is clearly the paper closer to what we do,
+so it is important to highlights in a fair way similarity and differences.
+
+conclusion ->
+is not just the paas is the combination of paas and iaas
+
+
+
+better title? the current title is a bit obscure to me!
+
+
+combining paas and iaas layer optimization to flexibly adapt applications to dynamic energy budget?
