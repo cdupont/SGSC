@@ -5,7 +5,7 @@ require(stats)
 hours<-c(0, 6, 12, 18, 24)
 devHours<-c(3, 9, 15, 21, 3)
 bizPerf=c(100, 200, 250, 150, 100)
-sdd=c(80, 30, 40, 50)
+sdd=c(80, 25, 40, 50)
 sdu=c(20, 100, 20, 20)
 epsilon=.2
 
