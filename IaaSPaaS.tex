@@ -4,10 +4,10 @@
 
 In a typical PaaS application, the scaling is performed by launching more containers.
 Each container contains an instance, or worker, of the application.
-The containers are running in a traditional VM, controlled by a IaaS framework.
-To save energy, those VMs are traditionally consolidated on a part of the servers, which permits to switch off unused servers and thus save energy.
-Using the SFA, it is now possible to predict the amount of resource that an application will probably need, together with the deviations.
-This will allow to minimize the VM movements and optimize the usage of servers by placing them judiciously.
+The containers are running in a VM, controlled by an underlying IaaS framework.
+To save energy, those VMs are traditionally consolidated on a part of the servers of the data centre, which permits to switch off unused servers and thus save energy.
+Using the SFA, it is now possible to predict the amount of resource that an application will need, together with the possible deviations.
+This will allow to optimize the usage of servers by placing VMs on them judiciously, and to minimize the VM movements.
 However to achieve this we need to enhance the collaboration between the IaaS and PaaS.
 There are essentially two types of information that need to be exchanged:
 \begin{itemize}
@@ -16,18 +16,18 @@ There are essentially two types of information that need to be exchanged:
 \end{itemize}
 
 We believe that the VM grouping is an important information that should be transmitted between the PaaS and the IaaS layers.
-Indeed the PaaS layer has a certain degree of knowledge about the applications that are deployed on the cloud.
+Indeed the PaaS layer has a certain degree of knowledge about the applications that are deployed.
 If an application is composed of several VMs, it is beneficial to keep them together on the same node as much as possible, because they will probably have the same life cycle.
 Those VMs will probably exchange a lot of information among them.
 Furthermore, they will be switched off together when the application is terminated.
-This justifies to keep them together on the same node.
-Of course, the IaaS layer shouldn't be aware of the applications that are running in the data centre.
-However, the VM affinity is an information that could be transmitted to the IaaS when a PaaS manager asks for VMs creation during application deployment.
+This justifies to keep them together on the same node or group of nodes as much as possible.
+Furthermore, the affinity between VMs is an information that could be transmitted to the IaaS when a PaaS manager asks for VMs creation during application deployment.
 
 The other information that is worth transmitting from the PaaS to the IaaS is the VM life-time: an estimated duration that the VM will be kept running before being switched off.
 This information is important for the IaaS layer when optimizing the energy consumption of a data centre through VM consolidation: indeed to switch off a server it is necessary to migrate all VMs running on that server.
-However, migrating a VM is an investment, and if the VM is about to be switched off by the PaaS layer, this investment is lost.
-Those two information transmission (VM grouping and VM life-time) does not break the separation of concerns between IaaS and PaaS, because they are expressed in terms of the IaaS VMs only: at IaaS level no knowledge of the running applications should be necessary.
+However, migrating a VM is an investment, and if the VM is about to be terminated by the PaaS layer, this investment is lost.
+Of course, the IaaS layer shouldn't be aware of the applications that are running in the data centre, as it is not its role and would furthermore break the separation of concerns between the IaaS and the PaaS.
+The two proposed information transmission (VM grouping and VM life-time) does not break the separation of concerns between IaaS and PaaS, because they are expressed in terms of the IaaS VMs only: at IaaS level no knowledge of the running applications should be necessary.
 
 %In pratice, PaaS, application execution VMs are containers.
 %That is they may contain more than a single application.
