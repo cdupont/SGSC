@@ -9,10 +9,11 @@ sdd=c(80, 30, 40, 50)
 sdu=c(20, 100, 20, 20)
 epsilon=.2
 
-par(col.axis="red", lines.lwd=2.0)
 pdf(paste("../generated/SFA-candles.pdf"))
-plot(hours, bizPerf, ylim=c(0, 350), xlim=c(0, 24), xaxs="i", yaxs="i", xlab="Time (Hour of the day)", ylab="Business Performance (Hertz)", col="red")
-lines(hours, bizPerf, lty=1, type="s", col="red", lwd=2.0)
+plot(hours, bizPerf, ylim=c(0, 350), xlim=c(0, 24), xaxs="i", xaxt="n", yaxs="i", xlab="Time (Hour of the day)", ylab="Business Performance (Hertz)", col="red", type="s")
+
+axis(side=1, at=c(0, 6, 12, 18, 24)) 
+
 segments(devHours, bizPerf-sdd , devHours, bizPerf+sdu, lwd=2.0)
 segments(devHours-epsilon, bizPerf-sdd, devHours+epsilon, bizPerf-sdd, lwd=2.0)
 segments(devHours-epsilon, bizPerf+sdu, devHours+epsilon, bizPerf+sdu, lwd=2.0)
