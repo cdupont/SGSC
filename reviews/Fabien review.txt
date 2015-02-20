@@ -47,6 +47,8 @@ Non. La seule unité de perf pour les services web c'est la latence. Le reste c'
 Déjà discuté de cette situation avec HP. Ce n'est pas une métrique de performance car ton webservice n'est pas responsable du nombre de pages vues. Ce sont tes commerciaux.
 Par contre la latence est ta métrique business. Tu scale up/down en fonction des variations de latence, de ta charge CPU/IO (règles d'auto-elascitié par défaut pour EC2 par exemple)
 
+> CDU: done.
+
 Happy point. Déjà discuté. chez toi c'est une métrique principale, mais elle n'est reliée à aucune métrique du cloud. Que veux tu donc en faire ? Comment l'intégrer dans un système de décision.
 "Utilisateur content"/"Utilisateur pas content" -> et alors ?
 
@@ -75,6 +77,8 @@ Pourquoi ne pas remonter un use case ou justement l'IaaS initie des scales-up /s
 
 ** Implementation **
 Non, design uniquement
+
+> CDU: done
 
 ... called the ”Optimizer”. This component (also called ”auto-scaler”) ...
 Sur la même ligne, tu donnes déjà 2 noms à ton système. Pourquoi pas 1 ? Vu la taille de ta section, est-il réellement utile de le nommer ?

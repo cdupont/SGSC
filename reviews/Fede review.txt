@@ -34,13 +34,13 @@ reading the intro it seems that we focus on SFA, I would present better:
 
 
 sfa->
-
 the section looks sound, some minor remarks
 
 "while giving more that a threshold will not have
 any perceptible impact on the end user.”
+I suspect something is missing, “than that threshold”?
 
-i suspect something is missing, “than that threshold”?
+CDU: Done
 
 what you mean by “default power consumption” is this a threshold, or this a value you measured for that working mode?
 -> clarify
