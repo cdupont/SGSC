@@ -1,10 +1,14 @@
 main = main
 
-all:  r pdf
+all:  r graphviz pdf
 
 r: 
 	mkdir -p generated
 	cd R; Rscript SFA-candles.R
+
+graphviz:
+	mkdir -p generated
+	dot -Tpdf dot/SFABlock.dot -o generated/SFABlock.pdf
 
 pdf:
 	pdflatex $(main)
