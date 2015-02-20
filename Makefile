@@ -8,7 +8,8 @@ r:
 
 graphviz:
 	mkdir -p generated
-	dot -Tpdf dot/SFABlock.dot -o generated/SFABlock.pdf
+	dot -Tpdf dot/SFABlock.dot -o generated/SFABlockUncropped.pdf
+	pdfcrop generated/SFABlockUncropped.pdf generated/SFABlock.pdf
 
 pdf:
 	pdflatex $(main)
