@@ -56,7 +56,11 @@ Indeed, some applications such as video transcoding can benefit from receiving t
 This kind of application reacts linearly to the amount of resources it is allocated.
 On the other hand, an application such as a web server typically have a "turning point" in their relation between performance and resources.
 Indeed, giving them less that a certain level of resources (such as the number of front-end VMs) will start to augment the latency in delivering web pages, thus making the end-user unhappy.
-On the other hand, giving them more than that level of resources will not have any perceptible impact on the end user, as the latency is already small.
+On the contrary, giving them more than that level of resources will not have any perceptible impact on the end user, as the latency is already small.
+This is represented by the vertical deviation bars in figure~\ref{fig:SFA}: the length of the bar represents the amount of Happy points that the application will win/lose when given more/less performance than the recoBP, respectively.
+In this example, at 10 O’clock, if the PaaS framework allocates the resource corresponding to the recommended business performance of 200Hz, the application will collect 0 Happy points.
+If the application gets 300Hz, it will get 1H, and one more Happy point for each 100Hz above that.
+Conversely, if it gets less than the recommended 200Hz, it will loose Happy point at the rate of one happy point per 25Hz.
 
 We further define the various Working Modes (WM) of an application.
 A WM corresponds to a set of resources allocated by the PaaS to an application.
