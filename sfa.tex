@@ -42,7 +42,7 @@ WorkingModes:
 \label{lst:SFA}
 \end{listing}
 
-As shown in listing~\ref{lst:SFA} and also represented graphically in figure~\ref{fig:SFA}, for each time frame the SFA defines a recommended business performance (RecoBP). 
+As shown in listing~\ref{lst:SFA} and also represented graphically in figure~\ref{fig:SFA}, for each time frame of a day the SFA defines a recommended business performance (RecoBP). 
 The business performance is one of the KPIs of the application.
 It is expressed in Hertz: a number of items processed per unit of time.
 For example, for a Web server it is the number of pages served per minutes, for a video transcoding service it will be how many videos can be transcoded per minutes.
@@ -53,14 +53,14 @@ An application having zero Happy points means that the end user is reasonably sa
 An application being allocated exactly the number of resources corresponding to the RecoBP collects 0 Happy points.
 This situation corresponds to the traditional SLA threshold.
 The positive and negative deviations (PosDev and NegDev) declared in the SFA are then the way that each application "reacts" to being given more or less resources resources than the RecoBP.
-Indeed, some applications such as video transcoding can benefit to receive temporarily more resources because they can process more videos and thus make their end user happier. 
+Indeed, some applications such as video transcoding can benefit from receiving temporarily more resources because they can process more videos and thus make their end user happier. 
 This kind of application reacts linearly to the amount of resources it is allocated.
 On the other hand, an application such as a web server typically have a "turning point" in their relation between performance and resources.
-Indeed, giving them less that a certain level of resources (such as the number of front-end VMs) will start to augment the delay in delivering web pages, while giving more that a threshold will not have any perceptible impact on the end user.
+Indeed, giving them less that a certain level of resources (such as the number of front-end VMs) will start to augment the latency in delivering web pages, while giving more than that level of resources will not have any perceptible impact on the end user, as the latency is already small.
 
 We further define the Working Modes (WM) of an application.
 A WM corresponds to a set of resources allocated by the PaaS to an application.
-We associate to each WM a default power consumption and the maximum business performance it can offer.
+We associate to each WM a power consumption and the maximum business performance it can offer.
 In practice, a WM corresponds to a number of VMs or Linux Containers, each running instances of the application.
 Using the SFA, it is now possible to compute the number of Happy points provided by each WM for each time slot.
 

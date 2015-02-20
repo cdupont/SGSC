@@ -17,7 +17,7 @@ We think that a PaaS layer brings great opportunities for a better energy manage
 Typically, an application manager will issue a command to a PaaS framework to scale up or down an application, according to predefined patterns.
 Some frameworks allow to automatize this process: Cloudify\footnote{http://www.gigaspaces.com/cloudify-cloud-orchestration/overview}, for example, provides a language for auto-scaling.
 This language defines Key Performance Indicators (KPIs) and thresholds that will trigger the scaling operations.
-For example, in the case of a 3-tier Web server application, it is possible to describe that if the number of page views per minute goes over a certain threshold, a new front-end VM should be launched.
+For example, in the case of a 3-tier Web server application, it is possible to describe that if the latency in serving the pages goes over a certain threshold, a new front-end VM should be launched.
 
 However, when it comes to the adaptation of applications workload to the availability of the renewable energies, we think that a piece is missing.
 Indeed, currently the PaaS framework has no way to lower or postpone workload in a reasonable way when there is no renewable energy, for instance.
