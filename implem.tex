@@ -13,5 +13,5 @@ The SFA is used in the communication between an application and the underlying P
 In practice, we add a component in the Cloud Foundry stack called the "Optimizer".
 This component accepts commands from the application load balancer.
 Instead of just scale-up/scale-down commands as it is the case currently, we include a recommended scaling level, together with a positive deviation and a negative deviation, as described in Section~\ref{sec:sfa}.
-This will let the Optimizer to optimize according to multiple criteria: 1) the energy consumption in the data centre, 2) the global happiness of the applications (as the sum of all happy points granted to applications) and finally 3) the usage of renewable energies.
-Using the SFA, the optimizer is able to find the correct trade-offs that will allow it to comply which energy budgets while maximizing the overall end-user happiness in the data centre.
+This will let the Optimizer to optimize the full PaaS layer according to multiple criteria: 1) the energy consumption in the data centre, 2) the global happiness of the applications (as the sum of all happy points granted to applications) and finally 3) the usage of renewable energies.
+Using the SFA, the Optimizer is able to find the correct trade-offs that will allow it to comply which energy budgets while maximizing the overall end-user happiness in the data centre.
