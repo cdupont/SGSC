@@ -2,25 +2,26 @@
 \section{Introduction}
 \label{sec: intro}
 
-A recent study~\cite{koomey2011} showed that, while still growing, the energy consumption of data centres is growing at a slower pace than previously excepted.
+A recent study~\cite{koomey2011} showed that, while still growing, the current energy consumption of data centres is less than previously excepted.
 Electricity used in US data centres in 2010 was significantly lower than predicted by the EPA’s 2007 report to Congress on data centres.
 There is a combination of factors explaining this slow down, among which the application of new energy policies in data centres.
-Consolidation techniques to reduce the power used by a given workload in a data centre, are nowadays adopted in several data centre and cloud management solutions.
-Research on how to improve Virtual Machines (VMs) consolidation and, consequently, reduce the energy consumption of a data centre it is not going to bring any big breakthrough.
+For example, consolidation techniques to reduce the power of servers in a data centre are nowadays adopted in several cloud management solutions.
+However, the problem of how to improve Virtual Machines (VMs) consolidation is already well studied and it is probably not going to bring big breakthrough any more.
 Nevertheless, societal challenges are evolving.
-It is not only \emph{how much} energy you consume to be important, but also \emph{which} energy you consume. 
-This is why we think the attention of researchers in the field of energy management in Cloud Computing should shift from the paradigm of "consume less" to the paradigm of "consume better".
+It is not only \emph{how much} energy you consume which is important, but also \emph{which} energy you consume. 
 As important energy consumers, it is important that the energy management and policies of data centres prioritize the consumption of renewable energies over brown energies.
 However, the main problem with the utilization of renewable energies is that they are very variable in time.
 To adapt to such energies, we need to adapt and shift the workload of applications.
 This means reducing the workload when there is less renewable energies available, for example.
 
-Beyond that, the technological landscape is changing. Data centre host more than simple virtual machines. New "virtualization" techniques such as containers are appearing on the scene, and Platform-as-a-Service solutions are more and more used on top of Infrastructure-as-a-Service solutions. PaaS management frameworks models the architecture of applications and provide management function to scale up and down multi-tier applications. 
+Beyond that, the technological landscape is changing.
+Data centres can now host more than simple virtual machines.
+New "virtualization" techniques such as containers are appearing on the scene, and Platform-as-a-Service solutions are more and more used on top of Infrastructure-as-a-Service solutions.
+PaaS management frameworks models the architecture of applications and provide management functions to scale up and down multi-tier applications. 
 Some frameworks allow to automatize this process: Cloudify\footnote{http://www.gigaspaces.com/cloudify-cloud-orchestration/overview}, for example, provides a language for auto-scaling.
 This language defines Key Performance Indicators (KPIs) and thresholds that will trigger the scaling operations.
 For example, in the case of a 3-tier Web server application, it is possible to describe that if the latency in serving the pages goes over a certain threshold, a new front-end VM should be launched.
-As such, the "intelligence" of PaaS management frameworks can be easily employed for apply energy management policies taking into account application SLAs and their architecture.
-
+As such, the "intelligence" of PaaS management frameworks can be easily employed to apply energy management policies taking into account application SLAs and their architecture.
 Following this reasoning, we believe that the combined management of PaaS and IaaS may bring new opportunities in energy policies management\cd{a bit overstating}.
 
 However, when it comes to the adaptation of applications workload to dynamic power budgets, we think that a piece is missing.
@@ -29,11 +30,11 @@ PaaS models can be enhanced to better describe the flexibility of applications a
 
 Thus, in this paper we propose the concept of Service Flexibility Agreement (SFA). 
 The SFA is an extended Service Level Agreement (SLA): it includes a description of the flexibility of an application.
-While, the SLA usually defines only minimum levels of resources that an application should be guaranteed to have, in the context of flexible applications, this is not enough: some applications can accept to have a temporarily reduced performance or shifted activities.
+While the SLA usually defines only minimum levels of resources that an application should be guaranteed to have, in the context of flexible applications, this is not enough: some applications can accept to have a temporarily reduced performance or shifted activities.
 Similarly, some applications would benefit from a temporary increase of allocation of resources when renewable energies are available.
-The SFA defines a simple interface to describe this flexibility in term or resource adopted over the time. 
+The SFA defines a simple interface to describe this flexibility in term of resource allocated over the time. 
 Thanks to the SFA, an energy-aware PaaS framework is able to dynamically reconfigure applications or single layers (e.g. scale-up and down) to comply with a given energy budget (e.g. the amount of green energy available at a given moment in time).
-Finally, changes occurred at the level of the PaaS framework can be exploited by an underlying IaaS framework: the information sharing between the two  improves the energy usage.
+Finally, changes occurring at the level of the PaaS framework can be exploited by an underlying IaaS framework: the information sharing between the two improves the energy usage.
 
 %Another optimization can happen via applications consolidation into a reduced number of VMs.
 %On the one side, the availability of PaaS infrastructure simplifies the understanding of deployed applications in the virtual appliance (e.g. the information on relations between services in different appliances is transparent), on the other it makes more complex the workload management (e.g. containers add a further level of complexity in the modeling of data center resources) and hence it requires a better understanding of implications between the two layers in the energy optimization of used resources.
