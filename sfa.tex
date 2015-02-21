@@ -7,14 +7,14 @@ However, the flexibility is entirely controlled by the application and/or the ap
 The intuition behind SFA is to delegate some of the flexibility control to the PaaS framework while still guaranteeing the end user satisfaction.
 With respect to a traditional SLA, the SFA adds a few new dimensions: the possibility for the required resources to vary in time, plus the possibility to qualify violations of the required performance.
 
-\begin{figure}[h]
+\begin{figure}[t]
 \centering
 \includegraphics[width=0.99\linewidth]{generated/SFA-candles.pdf}
 \caption{Service Flexibility Agreement representation}
 \label{fig:SFA}
 \end{figure}
 
-\begin{listing}[ht]
+\begin{listing}[t]
 \begin{minted} [frame=single, linenos]{yaml}
 SFA:
   - Start: 00:00

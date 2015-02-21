@@ -2,13 +2,13 @@
 \section{Interaction among IaaS and PaaS layers}
 \label{sec:iaaspaas}
 
-In recent PaaS frameworks, application scaling is performed by launching more containers.
+In novel PaaS frameworks, application scaling is performed by launching more containers.
 Each container is an instance, or worker, of the application.
 Containers run in a VM, controlled by an underlying IaaS framework.
 To save energy, those VMs are traditionally consolidated on a part of the servers of the data centre, which permits to switch off unused servers and thus save energy.
 Using the SFA, it is now possible to predict the amount of resource that an application will need, together with the possible deviations.
-This will allow to optimize VMs by placing containers in them and consequently optimize servers by placing VMs where containers are hosted.
-VMs an containers movements should be minimized to preserve the energy efficiency.
+This will allow to optimize VMs by placing containers in them and consequently optimize servers by placing VMs.
+VMs and containers movements should be minimized to preserve the energy efficiency.
 However to achieve this we need to enhance the interaction between the IaaS and PaaS.
 There are essentially two types of information that need to be exchanged:
 \begin{itemize}
@@ -22,13 +22,13 @@ If an application is composed of several containers forming the different layers
 Those containers will probably exchange a lot of information among them.
 Furthermore, they will be switched off together when the application is terminated.
 This justifies to keep them together on the same VM or group of VMs as much as possible.
-Furthermore, the affinity between VMs is an information that could be transmitted to the IaaS when a PaaS manager asks for VMs creation during application deployment.
+%Furthermore, the affinity between VMs is an information that could be transmitted to the IaaS when a PaaS manager asks for VMs creation during application deployment.
 
-The container life-time determines the VMs lifetime. Thus it is another information that is worth to be shared among PaaS to the IaaS layer.
+Containers life-time determines the VMs lifetime. Thus it is another information that is worth to be shared among PaaS and the IaaS layer.
 Computing the VM life-time, i.e. an estimated duration that the VM will be kept running before being switched off, is important for the IaaS layer when optimizing the energy consumption of a data centre through VM consolidation: indeed to switch off a server it is necessary to migrate all VMs running on that server.
 However, migrating a VM is an investment, and if the VM is about to be terminated by the PaaS layer, this investment is lost.
-Of course, the IaaS layer shouldn't be aware of the applications that are running in the data centre, as it is not its role and would furthermore break the separation of concerns between the IaaS and the PaaS.
-The two proposed information transmission (VMs grouping and VMs life-time) does not break the separation of concerns between IaaS and PaaS, because they are expressed in terms of the IaaS VMs only: at IaaS level no knowledge of the running applications should be necessary.
+The IaaS layer shouldn't be aware of the applications running in the data centre, as it is not its role and would furthermore break the separation of concerns between the IaaS and the PaaS.
+The sharing of VMs grouping and VMs life-time does not break the separation of concerns between IaaS and PaaS, because they are expressed in terms of the IaaS VMs only.
 
 %In pratice, PaaS, application execution VMs are containers.
 %That is they may contain more than a single application.

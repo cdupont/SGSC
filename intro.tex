@@ -21,12 +21,11 @@ This language defines Key Performance Indicators (KPIs) and thresholds that will
 For example, in the case of a 3-tier Web server application, it is possible to describe that if the latency in serving the pages goes over a certain threshold, a new front-end VM should be launched.
 As such, the "intelligence" of PaaS management frameworks can be easily employed for apply energy management policies taking into account application SLAs and their architecture.
 
-In line with the above reasoning, we believe that the combined management of PaaS and IaaS may bring new opportunities in energy policies management\cd{a bit overstating}.
+Following this reasoning, we believe that the combined management of PaaS and IaaS may bring new opportunities in energy policies management\cd{a bit overstating}.
 
-However, when it comes to the adaptation of applications workload to the availability of the renewable energies, we think that a piece is missing.
-Indeed, currently the PaaS framework has no way to lower or postpone workload in a reasonable way when there is no renewable energy or energy is too expensive, for instance.
-We believe that the PaaS models can be enhanced to better describe the flexibility of applications.
-This would allow to perform optimizations at data centre level, such as increasing the renewable energy usage.
+However, when it comes to the adaptation of applications workload to dynamic power budgets, we think that a piece is missing.
+Indeed, currently PaaS frameworks have no way to lower or postpone workload in a reasonable way when there is no renewable energy or energy is too expensive, for instance.
+PaaS models can be enhanced to better describe the flexibility of applications and allow to perform optimizations at data centre level, such as increasing the renewable energy usage.
 
 Thus, in this paper we propose the concept of Service Flexibility Agreement (SFA). 
 The SFA is an extended Service Level Agreement (SLA): it includes a description of the flexibility of an application.
@@ -34,7 +33,7 @@ While, the SLA usually defines only minimum levels of resources that an applicat
 Similarly, some applications would benefit from a temporary increase of allocation of resources when renewable energies are available.
 The SFA defines a simple interface to describe this flexibility in term or resource adopted over the time. 
 Thanks to the SFA, an energy-aware PaaS framework is able to dynamically reconfigure applications or single layers (e.g. scale-up and down) to comply with a given energy budget (e.g. the amount of green energy available at a given moment in time).
-Finally, changes occurred at the level of the PaaS framework can be exploited by an underlying IaaS framework: an improved information sharing between the two can improve the energy usage.
+Finally, changes occurred at the level of the PaaS framework can be exploited by an underlying IaaS framework: the information sharing between the two  improves the energy usage.
 
 %Another optimization can happen via applications consolidation into a reduced number of VMs.
 %On the one side, the availability of PaaS infrastructure simplifies the understanding of deployed applications in the virtual appliance (e.g. the information on relations between services in different appliances is transparent), on the other it makes more complex the workload management (e.g. containers add a further level of complexity in the modeling of data center resources) and hence it requires a better understanding of implications between the two layers in the energy optimization of used resources.
