@@ -1,6 +1,6 @@
 digraph SFABlock {
 
-PaaS[shape=rectangle, label="Cloud Foundry"]
+PaaS[shape=rectangle, label="PaaS Manager"]
 autoScaler[shape=rectangle, label="Optimizer"]
 loadBalancer[shape=rectangle, label="Application"]
 VM1[label="FE VM1"]
