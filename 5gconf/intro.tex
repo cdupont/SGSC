@@ -1,13 +1,11 @@
-% !TEX root =  main.tex
 \section{Introduction}
 \label{sec: intro}
-
 A recent study~\cite{koomey2011} showed that, while still growing, the current energy consumption of data centres is less than previously excepted.
 Electricity used in US data centres in 2010 was significantly lower than predicted by the EPA’s 2007 report to Congress on data centres.
 There is a combination of factors explaining this slow down, among which the application of new energy policies in data centres.
 For example, consolidation techniques to reduce the power of servers in a data centre are nowadays adopted in several cloud management solutions.
 However, the problem of how to improve Virtual Machines (VMs) consolidation is already well studied and it is probably not going to bring big breakthroughs any more.
-Nevertheless, societal challenges are evolving.
+Nevertheless, societal challenges within smart cities are evolving.
 It is not only \emph{how much} energy you consume which is important, but also \emph{which} energy you consume. 
 As important energy consumers, it is important that the energy management and policies of data centres prioritize the consumption of renewable energies over brown energies.
 However, the main problem with the utilization of renewable energies is that they are very variable in time.
@@ -17,7 +15,7 @@ This means reducing the workload when there is less renewable energies available
 Beyond that, the technological landscape is changing.
 Data centres can now host more than simple virtual machines.
 New "virtualization" techniques such as containers are appearing on the scene, and Platform-as-a-Service solutions are more and more used on top of Infrastructure-as-a-Service solutions.
-PaaS management frameworks models the architecture of applications and provide management functions to scale up and down multi-tier applications. 
+PaaS management frameworks model the architecture of applications and provide management functions to scale up and down multi-tier applications. 
 Some frameworks allow to automatize this process: Cloudify\footnote{http://www.gigaspaces.com/cloudify-cloud-orchestration/overview}, for example, provides a language for auto-scaling.
 This language defines Key Performance Indicators (KPIs) and thresholds that will trigger the scaling operations.
 For example, in the case of a 3-tier Web server application, it is possible to describe that if the latency in serving the pages goes over a certain threshold, a new front-end VM should be launched.
@@ -26,12 +24,20 @@ Following this reasoning, we believe that the combined management of PaaS and Ia
 
 However, when it comes to the adaptation of applications workload to dynamic power budgets, we think that a piece is missing.
 Indeed, currently PaaS frameworks have no way to lower or postpone workload in a reasonable way when there is no renewable energy or energy is too expensive, for instance.
-PaaS models can be enhanced to better describe the flexibility of applications and allow to perform optimizations at data centre level, such as increasing the renewable energy usage.
+PaaS models can be enhanced to better describe the flexibility of applications and allow to perform optimizations at smart city data centre level, such as increasing the renewable energy usage.
 
 Thus, in this paper we propose the concept of Service Flexibility Agreement (SFA). 
 The SFA is an extended Service Level Agreement (SLA): it includes a description of the flexibility of an application.
 While the SLA usually defines only minimum levels of resources that an application should be guaranteed to have, in the context of flexible applications, this is not enough: for example some applications can accept to have a temporarily reduced performance or shifted activities.
 Similarly, some applications would benefit from a temporary increase of allocation of resources when renewable energies are available.
-The SFA defines a simple interface to describe this flexibility in term of resource allocated over time, with possible deviations. 
+The SFA defines a simple interface to describe this flexibility in terms of resource allocated over time, with possible deviations. 
 Thanks to the SFA, an energy-aware PaaS framework is able to dynamically reconfigure applications or single layers (e.g. scale-up and down) to comply with a given energy budget (e.g. the amount of green energy available at a given moment in time).
 Finally, changes occurring at the level of the PaaS framework can be exploited by an underlying IaaS framework: the information sharing between the two improves the energy usage.
+
+With the aim of addressing climate change, increasing the EU’s energy security and strengthening its competitiveness, the EU has created the set of targets known as “20-20-20” for its climate and energy policies. Due to the trend of further urbanization, Smart Cities are one of the key enablers of the 2020 targets. It is expected, that the urbanization concentrates the energy consumption in the city and Smart Cities are one way to decrease and optimize this consumption and therefore increase the energy efficiency. Therefore it will need new processes and innovation concepts at city level.
+
+For some years there was a tendency to move data centres outside the cities, to locations where space is not an issue and the electricity infrastructure is not challenged by other large consumers. However, lately we see the trend of DCs moving back into the vicinity of cities because of issues like network latency and due to the increased density of racks and modularity of whole DC sites. However, also DCs that are separate departments inside a company can be integrated into the smart city energy management.
+
+Data centres for purposes of cities need to be located inside the city (and not in remote locations, like in Finland). In addition, they should be good citizens. This implies a lot in terms of management, energy consumption, renewables, data security/privacy and governance.
+
+As a loose connection with 5G/communications is that: 5G technologies are enabling yet more use of Internet/videos/social media. This data is more and more processed in the Cloud. So DC located in the City near the base station means more responsiveness and less losses. Similarly, the concept of "cloud edge" or mini-cloud located near a base station or a sensor network in a smart city where a sensor network is deployed can benefit from this approach. %or about a CDN (contend delivery network) and where energy efficiency is needed.

@@ -12,11 +12,11 @@ graphviz:
 	pdfcrop generated/SFABlockUncropped.pdf generated/SFABlock.pdf
 
 pdf:
-	pdflatex $(main)
+	pdflatex -shell-escape $(main)
 	bibtex $(main)
-	pdflatex $(main)
-	pdflatex $(main)
-	pdflatex $(main)
+	pdflatex -shell-escape $(main)
+	pdflatex -shell-escape $(main)
+	pdflatex -shell-escape $(main)
 
 install:
 	sudo apt-get install python-pygments

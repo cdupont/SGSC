@@ -9,8 +9,8 @@
 \usepackage{ifthen}
 \usepackage{listings}
 \usepackage{graphvizzz}
-%\usepackage{minted}
-\usepackage{makeidx}  % allows for indexgeneration
+\usepackage{minted}
+%\usepackage{makeidx}  % allows for indexgeneration
 % \makeindex          % be prepared for an author index
 %
 \begin{document}
@@ -22,14 +22,14 @@
 \titlerunning{Energy Efficient Data Centres within Smart Cities}  % abbreviated title (for running head)
 %                                     also used for the TOC unless
 %                                     \toctitle is used
-\author{Corentin Dupont\and Mehdi Sheikhalishahi\and Federico M. Facca \inst{1}}
+\author{Corentin Dupont\and Mehdi Sheikhalishahi\and Federico M. Facca \and Silvio Cretti \inst{1}}
 %
 %\authorrunning{Ivar Ekeland et al.}   % abbreviated author list (for running head)
 %
 %%%% list of authors for the TOC (use if author list has to be modified)
 %\tocauthor{Ivar Ekeland, Roger Temam, Jeffrey Dean, David Grove,Craig Chambers, Kim B. Bruce, Elisa Bertino}
 %
-\institute{Create-Net, Trento, Italy \email{{dupont, msheikhalishahi, ffacca}@create-net.org}}
+\institute{Create-Net, Trento, Italy \email{{cdupont, msheikhalishahi, ffacca, scretti}@create-net.org}}
 
 \maketitle              % typeset the title of the contribution
 % \index{Ekeland, Ivar} % entries for the author index
@@ -44,20 +44,16 @@
 \end{abstract}
 %
 \input{intro}
-\input{smartcity}
+%\input{smartcity}
 \input{sfa}
 \input{IaaSPaaS}
 \input{implem}
 \input{relworks}
 \input{conclusion}
-
 \section*{Acknowledgments}
-
 This work has been carried out within the European Project DC4Cities (FP7-ICT-2013.6.2).
 
-\begin{thebibliography}{5}
+%\begin{thebibliography}{5}
+\bibliographystyle{plain}
 \bibliography{biblio}
-
-\end{thebibliography}
-
 \end{document}
